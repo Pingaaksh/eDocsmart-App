@@ -52,7 +52,7 @@ class CommonButton extends StatelessWidget {
     this.isBordered = true,
     this.icon,
   })  : bgColor = Get.theme.colorScheme.surface,
-        textColor = Get.theme.colorScheme.primaryContainer;
+        textColor = Get.theme.colorScheme.secondary;
 
   CommonButton.bordered({
     super.key,
@@ -117,8 +117,8 @@ class CommonButton extends StatelessWidget {
       child: Container(
         margin: margin ?? EdgeInsets.zero,
         width: width,
-        height: height ?? 60.h,
-        padding: padding ?? EdgeInsets.only(left: 15.w, right: 15.w, top: 18.h, bottom: 18.h),
+        height: height ?? 50.h,
+        padding: padding ?? EdgeInsets.only(left: 0.w, right: 0.w, top: 0.h, bottom: 0.h),
         decoration: BoxDecoration(
           color: isBordered ? bgColor : bgColor ?? context.theme.colorScheme.primary,
           border: isBordered
@@ -127,7 +127,7 @@ class CommonButton extends StatelessWidget {
                   color: outLineColor ?? context.theme.colorScheme.outline,
                 )
               : Border.all(width: 0, color: Colors.transparent),
-          borderRadius: borderRadius ?? BorderRadius.circular(100.r),
+          borderRadius: borderRadius ?? BorderRadius.circular(70.r),
         ),
         child: Center(
           child: Row(
@@ -143,7 +143,7 @@ class CommonButton extends StatelessWidget {
               ],
               CommonTextMedium(
                 text: text ?? 'Next',
-                size: fontSize ?? 20.sp,
+                size: fontSize ?? 13.sp,
                 color: textColor ?? context.theme.colorScheme.surface,
                 textAlign: TextAlign.center,
               ),

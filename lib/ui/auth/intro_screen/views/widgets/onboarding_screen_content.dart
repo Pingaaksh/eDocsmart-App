@@ -12,7 +12,7 @@ Widget buildPage(
 }) {
   return Center(
     child: Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 58.w),
+      padding:  EdgeInsets.symmetric(horizontal: 50.w),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

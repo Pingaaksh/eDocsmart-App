@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="add77d6c-e21f-4505-8356-7c4cfce232b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733226202887.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733226202932.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733226202968.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733226202986.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733226202886.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733226202932.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733226202968.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733226202986.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733227245186.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733227245203.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733227245214.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733227245222.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733227245186.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733227245203.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733227245214.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733227245222.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
@@ -23,8 +21,13 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/common/theme_resource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/theme_resource.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/di/firebase_messaging_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/di/firebase_messaging_manager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/widgets/app_common_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/app_common_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/locales.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/locales.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/auth/intro_screen/controllers/intro_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/intro_screen/controllers/intro_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/auth/intro_screen/views/intro_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/intro_screen/views/intro_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/auth/intro_screen/views/widgets/onboarding_screen_content.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/intro_screen/views/widgets/onboarding_screen_content.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/auth/splash_screen/views/splash_screen_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/splash_screen/views/splash_screen_view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,10 +90,10 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;devlopment&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/eDocsmart-App&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dell/Desktop/skin-match-flutter&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,

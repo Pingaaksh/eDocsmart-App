@@ -100,7 +100,7 @@ class FirebaseMessagingManager {
   ) async {
     Logger.write('Title : $title Body : $body');
 
-    var iosInitializationSettings = DarwinInitializationSettings(
+    var iosInitializationSettings = const DarwinInitializationSettings(
       // onDidReceiveLocalNotification:
       //     (int id, String? title, String? body, String? payload) {
       //   Logger.write('@108 we got $body and $payload');

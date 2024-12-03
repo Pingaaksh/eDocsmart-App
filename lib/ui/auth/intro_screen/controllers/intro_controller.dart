@@ -12,18 +12,17 @@ class IntroController extends GlobalGetXController with Validator {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    print("helllllp");
-    // timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
-    //   if (currentPage < 2) {
-    //     currentPage++;
-    //   } else {
-    //     currentPage = 0;
-    //   }
-    //   pageController.animateToPage(
-    //     currentPage,
-    //     duration: const Duration(milliseconds: 400),
-    //     curve: Curves.easeInOut,
-    //   );
-    // });
+    timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
+      if (currentPage < 2) {
+        currentPage++;
+      } else {
+        currentPage = 0;
+      }
+      pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    });
   }
 }

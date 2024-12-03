@@ -152,6 +152,7 @@ class ThemeResource {
         letterSpacing: 0,
         fontWeight: FontWeight.w500, //MEDIUM
         color: LightThemeColors.textPrimary,
+        fontFamily: FontFamilyType.poppins.name ,
         decorationColor: LightThemeColors.primaryColor,
       ),
       labelSmall: TextStyle(

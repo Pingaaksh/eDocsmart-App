@@ -24,7 +24,6 @@ class LocaleKeys {
   static const signIn = 'signIn';
   static const phoneNumber = 'phoneNumber';
   static const sendOTP = 'sendOTP';
-  static const login = 'login';
   static const email = 'email';
   static const resetPassword = 'resetPassword';
   static const newPassword = 'newPassword';
@@ -203,6 +202,10 @@ class LocaleKeys {
   static const onboardingFirstDis = 'Say goodbye to manual data entry! Simply snap a photo of your invoice, & watch as our app works its magic.';
   static const onboardingSecondDis = 'Like magic! Our AI instantly extracts every key detail—dates, amounts, vendor info—so you can forget about tedious typing and focus on what matters.';
   static const onboardingThirdDis = 'Organise, search, and manage your invoices all in one place. It’s your personal finance assistant—anytime, anywhere.';
+  static const register = 'REGISTER';
+  static const login = 'LOGIN';
+
+
 }
 
 class Locales {
