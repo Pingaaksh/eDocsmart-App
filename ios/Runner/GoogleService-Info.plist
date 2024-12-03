@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>352546152689-pdp0hpuaoimb9sl1jdq0qldeil3hnaoh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.352546152689-pdp0hpuaoimb9sl1jdq0qldeil3hnaoh</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>352546152689-paav54opqk6p1fuq9t4r58ec7t7g74af.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDMwLk2mwvdou4YoZ0NSOK_7X_WkWbRtg0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>352546152689</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.jli.bargainfox.ImageNotification</string>
+	<key>PROJECT_ID</key>
+	<string>skin-care-d6a4e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>skin-care-d6a4e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:352546152689:ios:0e478e7396aa6a6ef7c950</string>
+</dict>
+</plist>

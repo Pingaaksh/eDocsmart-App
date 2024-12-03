@@ -1,0 +1,1 @@
+ D:\\eDocsmart-App\\.dart_tool\\flutter_build\\2f41cb729ce4a85b9eff5a94ef243682\\native_assets.yaml: 

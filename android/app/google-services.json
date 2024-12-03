@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "352546152689",
+    "project_id": "skin-care-d6a4e",
+    "storage_bucket": "skin-care-d6a4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:352546152689:android:3407c9385cb902c3f7c950",
+        "android_client_info": {
+          "package_name": "com.skin.match"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "352546152689-paav54opqk6p1fuq9t4r58ec7t7g74af.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skin.match",
+            "certificate_hash": "174175bdcc4c4267d859ef3cd86828efb8f5d12a"
+          }
+        },
+        {
+          "client_id": "352546152689-u4fo71q850llgqnp1c2bh3ua2kf3frq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skin.match",
+            "certificate_hash": "727d80bb1c7d04a28c17783675dbe295cf667890"
+          }
+        },
+        {
+          "client_id": "352546152689-8jpo8vkh4roa8nd960638368pua9elaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnN2iVzymjR79nNaJNjIDei7DOJcdBI0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "352546152689-8jpo8vkh4roa8nd960638368pua9elaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,1581 @@
+Index: lib/models/local/product_model.dart
+===================================================================
+diff --git a/lib/models/local/product_model.dart b/lib/models/local/product_model.dart
+deleted file mode 100644
+--- a/lib/models/local/product_model.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ /dev/null	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
+@@ -1,31 +0,0 @@
+-class ProductModel {
+-  final String? name;
+-  final String? imageUrl;
+-  final double? amount;
+-  final double? ratings;
+-  final String? description;
+-  final bool? isFavorite;
+-  final String? storeImage;
+-  final String? categoryImage;
+-  final List<StoreModel>? storesData;
+-
+-  const ProductModel({
+-    this.name,
+-    this.imageUrl,
+-    this.amount,
+-    this.ratings,
+-    this.description,
+-    this.isFavorite,
+-    this.storeImage,
+-    this.categoryImage,
+-    this.storesData,
+-  });
+-}
+-
+-class StoreModel {
+-  final double? amount;
+-  final double? ratings;
+-  final String? storeImage;
+-
+-  const StoreModel({this.amount, this.ratings, this.storeImage});
+-}
+Index: lib/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart
+===================================================================
+diff --git a/lib/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart b/lib/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart
+deleted file mode 100644
+--- a/lib/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ /dev/null	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
+@@ -1,131 +0,0 @@
+-import 'package:get/get.dart';
+-import 'package:skin_match/core/common/app_common_exports.dart';
+-import 'package:skin_match/models/local/product_model.dart';
+-
+-class StoreBottomSheetWidget extends StatelessWidget {
+-  final ProductModel? productModel;
+-
+-  const StoreBottomSheetWidget({super.key, this.productModel});
+-
+-  @override
+-  Widget build(BuildContext context) {
+-    return Directionality(
+-      textDirection: TextDirection.ltr,
+-      child: SingleChildScrollView(
+-        child: Column(
+-          mainAxisSize: MainAxisSize.min,
+-          children: [
+-            Container(
+-              padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
+-              decoration: BoxDecoration(
+-                color: context.theme.cardColor,
+-                borderRadius: BorderRadius.circular(20.r),
+-                border: Border.all(color: context.theme.colorScheme.secondary),
+-              ),
+-              child: Row(
+-                children: [
+-                  ImagePlaceHolder(
+-                    imageUrl: productModel?.imageUrl ?? '',
+-                    height: 80.h,
+-                    width: 70.w,
+-                    fit: BoxFit.fill,
+-                  ),
+-                  SizedBox(width: 15.w),
+-                  Expanded(
+-                    child: Column(
+-                      children: [
+-                        CommonTextRegular(
+-                          text: '${productModel?.name}',
+-                          fontWeight: FontWeight.w500,
+-                          maxLine: 1,
+-                          textOverflow: TextOverflow.ellipsis,
+-                          size: 14.sp,
+-                        ),
+-                        SizedBox(height: 6.h),
+-                        CommonTextRegular(
+-                          text: '${productModel?.name}',
+-                          fontWeight: FontWeight.w400,
+-                          maxLine: 2,
+-                          textOverflow: TextOverflow.ellipsis,
+-                          size: 14.sp,
+-                          color: context.theme.colorScheme.scrim.withOpacity(0.7),
+-                        ),
+-                      ],
+-                    ),
+-                  ),
+-                ],
+-              ),
+-            ),
+-            SizedBox(
+-              height: 29.h,
+-            ),
+-            ListView.separated(
+-              shrinkWrap: true,
+-              primary: true,
+-              physics: const NeverScrollableScrollPhysics(),
+-              itemCount: productModel?.storesData?.length ?? 0,
+-              itemBuilder: (context, index) {
+-                return Row(
+-                  children: [
+-                    ImagePlaceHolder(
+-                      imageUrl: productModel?.storesData?[index].storeImage ?? '',
+-                      height: 40.h,
+-                      width: 40.w,
+-                      fit: BoxFit.fill,
+-                      paddingPlaceHolder: 10.w,
+-                    ),
+-                    SizedBox(
+-                      width: 20.w,
+-                    ),
+-                    Expanded(
+-                      child: CommonTextRegular(
+-                        text: getCurrency(
+-                          productModel?.storesData?[index].amount ?? 0,
+-                        ),
+-                        size: 14.sp,
+-                        fontWeight: FontWeight.w700,
+-                      ),
+-                    ),
+-                    Row(
+-                      children: [
+-                        SvgPicture.asset(
+-                          SVGPath.star,
+-                          height: 19.h,
+-                          width: 19.w,
+-                        ),
+-                        SizedBox(
+-                          width: 2.5.w,
+-                        ),
+-                        CommonTextRegular(
+-                          text: '${productModel?.storesData?[index].ratings ?? 0}',
+-                          fontWeight: FontWeight.w500,
+-                          size: 12.sp,
+-                          color: context.theme.colorScheme.scrim.withOpacity(0.7),
+-                        ),
+-                      ],
+-                    ),
+-                    SizedBox(
+-                      width: 30.w,
+-                    ),
+-                    SvgPicture.asset(
+-                      SVGPath.arrowUp,
+-                      height: 34.h,
+-                      width: 34.w,
+-                    ),
+-                  ],
+-                );
+-              },
+-              separatorBuilder: (BuildContext context, int index) {
+-                return Divider(
+-                  color: context.theme.dividerColor,
+-                ).paddingSymmetric(
+-                  vertical: 12.h,
+-                );
+-              },
+-            ),
+-          ],
+-        ),
+-      ),
+-    );
+-  }
+-}
+Index: lib/ui/dashboard/recommended_products/views/widget/product_grid_card.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/home/views/widget/product_detail_widget.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_count_widget.dart';\n\nclass ProductGridCard extends StatelessWidget {\n  final ProductModel? productModel;\n  final Function? onTapFavorite;\n  final VoidCallback onStoreTap;\n\n  const ProductGridCard({\n    super.key,\n    this.productModel,\n    this.onTapFavorite,\n    required this.onStoreTap,\n  });\n\n  @override\n  Widget build(BuildContext context) {\n    return Directionality(\n      textDirection: TextDirection.ltr,\n      child: Container(\n        padding: EdgeInsets.all(15.w),\n        decoration: BoxDecoration(\n          color: context.theme.cardColor,\n          borderRadius: BorderRadius.circular(30.r),\n          border: Border.all(\n            color: LightThemeColors.dividerColor,\n            width: 1.w,\n          ),\n        ),\n        child: Column(\n          crossAxisAlignment: CrossAxisAlignment.start,\n          children: [\n            Stack(\n              children: [\n                Center(\n                  child: ImagePlaceHolder(\n                    imageUrl: productModel?.imageUrl ?? '',\n                    height: 115.w,\n                    width: 115.w,\n                  ),\n                ),\n                Align(\n                  alignment: AlignmentDirectional.topStart,\n                  child: GestureDetector(\n                    onTap: () => onTapFavorite?.call(),\n                    child: SvgPicture.asset(\n                      (productModel?.isFavorite ?? false)\n                          ? SVGPath.favoriteIcon\n                          : SVGPath.favoriteSelected,\n                      height: 15.h,\n                      width: 18.w,\n                    ),\n                  ),\n                ),\n                if ((productModel?.storesData?.length ?? 0) > 1)\n                  Positioned(\n                    right: 0,\n                    bottom: 0,\n                    child: StoreCountWidget(\n                      storeLength: productModel?.storesData?.length ?? 0,\n                      onStoreTap: onStoreTap.call,\n                    ),\n                  ),\n              ],\n            ),\n            SizedBox(\n              height: 5.h,\n            ),\n            ProductDescriptionWidget(\n              name: productModel?.name ?? '',\n              categoryName: productModel?.description ?? '',\n              ratings: productModel?.ratings.toString() ?? '',\n              amount: productModel?.amount.toString() ?? '',\n              storeImage: productModel?.storeImage ?? '',\n            ),\n          ],\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/recommended_products/views/widget/product_grid_card.dart b/lib/ui/dashboard/recommended_products/views/widget/product_grid_card.dart
+--- a/lib/ui/dashboard/recommended_products/views/widget/product_grid_card.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/recommended_products/views/widget/product_grid_card.dart	(date 1722003140963)
+@@ -1,8 +1,6 @@
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/common/app_common_exports.dart';
+-import 'package:skin_match/models/local/product_model.dart';
+-import 'package:skin_match/ui/dashboard/home/views/widget/product_detail_widget.dart';
+-import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_count_widget.dart';
++import 'package:skin_match/models/remote/product_model.dart';
+ 
+ class ProductGridCard extends StatelessWidget {
+   final ProductModel? productModel;
+@@ -35,19 +33,19 @@
+           children: [
+             Stack(
+               children: [
+-                Center(
++                /*Center(
+                   child: ImagePlaceHolder(
+                     imageUrl: productModel?.imageUrl ?? '',
+                     height: 115.w,
+                     width: 115.w,
+                   ),
+-                ),
++                ),*/
+                 Align(
+                   alignment: AlignmentDirectional.topStart,
+                   child: GestureDetector(
+                     onTap: () => onTapFavorite?.call(),
+                     child: SvgPicture.asset(
+-                      (productModel?.isFavorite ?? false)
++                      true//(productModel?.isFavorite ?? false)
+                           ? SVGPath.favoriteIcon
+                           : SVGPath.favoriteSelected,
+                       height: 15.h,
+@@ -55,7 +53,7 @@
+                     ),
+                   ),
+                 ),
+-                if ((productModel?.storesData?.length ?? 0) > 1)
++                /*if ((productModel?.storesData?.length ?? 0) > 1)
+                   Positioned(
+                     right: 0,
+                     bottom: 0,
+@@ -63,19 +61,19 @@
+                       storeLength: productModel?.storesData?.length ?? 0,
+                       onStoreTap: onStoreTap.call,
+                     ),
+-                  ),
++                  ),*/
+               ],
+             ),
+             SizedBox(
+               height: 5.h,
+             ),
+-            ProductDescriptionWidget(
++            /*ProductDescriptionWidget(
+               name: productModel?.name ?? '',
+               categoryName: productModel?.description ?? '',
+               ratings: productModel?.ratings.toString() ?? '',
+               amount: productModel?.amount.toString() ?? '',
+               storeImage: productModel?.storeImage ?? '',
+-            ),
++            ),*/
+           ],
+         ),
+       ),
+Index: lib/ui/dashboard/home/views/widget/product_card.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/home/views/widget/product_detail_widget.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_count_widget.dart';\n\nclass ProductCard extends StatelessWidget {\n  final double? height;\n  final double? width;\n  final ProductModel? productModel;\n  final bool isSaved;\n  final Function? onTapFavorite;\n  final Function? onTapDelete;\n  final VoidCallback onStoreTap;\n\n  const ProductCard.saved({\n    super.key,\n    this.height,\n    this.width,\n    this.productModel,\n    this.onTapFavorite,\n    this.onTapDelete,\n    required this.onStoreTap,\n  }) : isSaved = true;\n\n  const ProductCard({\n    super.key,\n    this.height,\n    this.width,\n    this.productModel,\n    this.onTapFavorite,\n    this.onTapDelete,\n    required this.onStoreTap,\n  }) : isSaved = false;\n\n  @override\n  Widget build(BuildContext context) {\n    return Directionality(\n      textDirection: TextDirection.ltr,\n      child: Stack(\n        children: [\n          Container(\n            width: width ?? Get.width,\n            padding: EdgeInsets.all(15.w),\n            decoration: BoxDecoration(\n              color: context.theme.cardColor,\n              borderRadius: BorderRadius.circular(30.r),\n              border: Border.all(\n                color: LightThemeColors.dividerColor,\n                width: 1.w,\n              ),\n            ),\n            child: Row(\n              children: [\n                Stack(\n                  children: [\n                    Center(\n                      child: ImagePlaceHolder(\n                        imageUrl: productModel?.imageUrl ?? '',\n                        height: 115.w,\n                        width: 90.w,\n                      ),\n                    ),\n                    if (!isSaved)\n                      Align(\n                        alignment: AlignmentDirectional.topStart,\n                        child: GestureDetector(\n                          onTap: () => onTapFavorite?.call(),\n                          child: SvgPicture.asset(\n                            (productModel?.isFavorite ?? false)\n                                ? SVGPath.favoriteIcon\n                                : SVGPath.favoriteSelected,\n                            height: 15.h,\n                            width: 18.w,\n                          ),\n                        ),\n                      ),\n                    if ((productModel?.storesData?.length ?? 0) > 1)\n                      Positioned(\n                        left: 0,\n                        bottom: 0,\n                        child: StoreCountWidget(\n                          storeLength: productModel?.storesData?.length ?? 0,\n                          onStoreTap: onStoreTap.call,\n                        ),\n                      ),\n                  ],\n                ),\n                SizedBox(\n                  width: 8.w,\n                ),\n                Expanded(\n                  child: ProductDescriptionWidget(\n                    name: productModel?.name ?? '',\n                    categoryName: productModel?.description ?? '',\n                    ratings: productModel?.ratings.toString() ?? '',\n                    amount: productModel?.amount.toString() ?? '',\n                    storeImage: productModel?.storeImage ?? '',\n                    maxWidth: isSaved ? Get.width - 200.w : Get.width,\n                  ),\n                ),\n              ],\n            ),\n          ),\n          if (isSaved)\n            Padding(\n              padding: EdgeInsetsDirectional.symmetric(\n                horizontal: 20.w,\n                vertical: 12.h,\n              ),\n              child: Align(\n                alignment: AlignmentDirectional.topEnd,\n                child: GestureDetector(\n                  onTap: () => onTapDelete?.call(),\n                  child: SvgPicture.asset(\n                    SVGPath.deleteIcon,\n                    height: 20.h,\n                    width: 18.w,\n                  ),\n                ),\n              ),\n            ),\n        ],\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/home/views/widget/product_card.dart b/lib/ui/dashboard/home/views/widget/product_card.dart
+--- a/lib/ui/dashboard/home/views/widget/product_card.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/home/views/widget/product_card.dart	(date 1722002745308)
+@@ -1,6 +1,6 @@
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/common/app_common_exports.dart';
+-import 'package:skin_match/models/local/product_model.dart';
++import 'package:skin_match/models/remote/product_model.dart';
+ import 'package:skin_match/ui/dashboard/home/views/widget/product_detail_widget.dart';
+ import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_count_widget.dart';
+ 
+@@ -56,9 +56,11 @@
+                   children: [
+                     Center(
+                       child: ImagePlaceHolder(
+-                        imageUrl: productModel?.imageUrl ?? '',
++                        imageUrl: (productModel?.imageUrls ?? []).isNotNullAndEmpty
++                            ? productModel?.imageUrls?.first ?? ''
++                            : '',
+                         height: 115.w,
+-                        width: 90.w,
++                        width: 100.w,
+                       ),
+                     ),
+                     if (!isSaved)
+@@ -67,23 +69,24 @@
+                         child: GestureDetector(
+                           onTap: () => onTapFavorite?.call(),
+                           child: SvgPicture.asset(
+-                            (productModel?.isFavorite ?? false)
+-                                ? SVGPath.favoriteIcon
+-                                : SVGPath.favoriteSelected,
++                            true ? SVGPath.favoriteIcon : SVGPath.favoriteSelected,
+                             height: 15.h,
+                             width: 18.w,
+                           ),
+                         ),
+                       ),
+-                    if ((productModel?.storesData?.length ?? 0) > 1)
+-                      Positioned(
+-                        left: 0,
+-                        bottom: 0,
+-                        child: StoreCountWidget(
+-                          storeLength: productModel?.storesData?.length ?? 0,
+-                          onStoreTap: onStoreTap.call,
+-                        ),
+-                      ),
++                    Positioned(
++                      left: 0,
++                      bottom: 0,
++                      child: Obx(
++                        () => productModel?.storeCount.value != 0
++                            ? StoreCountWidget(
++                                storeLength: productModel?.storeCount.value ?? 0,
++                                onStoreTap: onStoreTap.call,
++                              )
++                            : const Offstage(),
++                      ),
++                    ),
+                   ],
+                 ),
+                 SizedBox(
+@@ -91,11 +94,12 @@
+                 ),
+                 Expanded(
+                   child: ProductDescriptionWidget(
+-                    name: productModel?.name ?? '',
+-                    categoryName: productModel?.description ?? '',
+-                    ratings: productModel?.ratings.toString() ?? '',
+-                    amount: productModel?.amount.toString() ?? '',
+-                    storeImage: productModel?.storeImage ?? '',
++                    name: productModel?.title ?? '',
++                    categoryName: productModel?.productCategory ?? '',
++                    ratings: productModel?.getScore() ?? '0',
++                    amount: productModel?.getPriceFormat(productModel?.price) ?? '',
++                    storeImage: '',
++                    storeName: productModel?.platform ?? '',
+                     maxWidth: isSaved ? Get.width - 200.w : Get.width,
+                   ),
+                 ),
+Index: lib/core/common/api_client.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class ApiClient {\n  static const bool _isDevelopmentMode = true;\n  static const String _url = _isDevelopmentMode\n      ? 'https://sknmatch.concettoprojects.com/api/'\n      : 'https://sknmatch.concettoprojects.com/api/';\n\n  static const Map<String, String> applicationJsonHeader = {\n    'Content-Type': 'application/json',\n  };\n\n  static String baseUrl = _url;\n  static String baseUrlTaha = 'http://20.46.53.55/';\n  final String jsonHeaderName = 'Content-Type';\n  static String jsonHeaderValue = 'application/json; charset=UTF-8';\n  static int timeoutSec = 200;\n  static int receiveTimeoutSec = 200;\n  final int successResponse = 200;\n\n  static const String login = 'login';\n  static const String sendOTP = 'send-otp';\n  static const String skinConditionList = 'skin-conditions-list';\n  static const String countryList = 'country-list';\n  static const String forgotPassword = 'forgot-password';\n  static const String verifyOTP = 'verify-code';\n  static const String resetPassword = 'reset-password';\n  static const String deleteAccount = 'delete-account';\n  static const String register = 'register';\n  static const String userDetail = 'user-detail';\n  static const String updateProfile = 'update-profile';\n  static const String changePassword = 'change-password';\n  static const String submitFeedback = 'feedback-support';\n  static const String cmsPage = 'cms';\n  static const String getAffectedAreaList = 'affected-area-list';\n  static const String getSubAffectedAreaList = 'sub-affected-area-list';\n  static const String verifyAffectedAreas = 'verify-affected-area';\n  static const String updateLanguage = 'update-language';\n\n  /// Taha's API\n  static const String searchProducts = 'dashboard/search';\n  static const String productsByPid = 'dashboard/products';\n}\n\nclass CmsSlug {\n  static const String privacyPolicy = 'privacy-policy';\n  static const String termsAndConditions = 'terms-and-conditions';\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/core/common/api_client.dart b/lib/core/common/api_client.dart
+--- a/lib/core/common/api_client.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/core/common/api_client.dart	(date 1721999574738)
+@@ -38,6 +38,7 @@
+   /// Taha's API
+   static const String searchProducts = 'dashboard/search';
+   static const String productsByPid = 'dashboard/products';
++  static const String popularProducts = 'dashboard/popular_products';
+ }
+ 
+ class CmsSlug {
+Index: lib/ui/dashboard/filters/views/filters_view.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/models/local/data_provider.dart';\nimport 'package:skin_match/models/local/product_brand_model.dart';\nimport 'package:skin_match/models/local/product_type_model.dart';\n\nimport '../controllers/filters_controller.dart';\n\nclass FiltersView extends GetView<FiltersController> {\n  const FiltersView({super.key});\n\n  @override\n  @override\n  Widget build(BuildContext context) {\n    return Column(\n      crossAxisAlignment: CrossAxisAlignment.start,\n      children: [\n        CommonTextRegular(\n          text: LocaleKeys.typeOfProduct.tr,\n          size: 16.sp,\n          fontWeight: FontWeight.w400,\n          fontFamilyType: FontFamilyType.productSansBold,\n        ),\n        SizedBox(\n          height: 5.h,\n        ),\n        createProductTypeDropDown(context),\n        SizedBox(\n          height: 20.h,\n        ),\n        CommonTextRegular(\n          text: LocaleKeys.brand.tr,\n          size: 16.sp,\n          fontWeight: FontWeight.w400,\n          fontFamilyType: FontFamilyType.productSansBold,\n        ),\n        SizedBox(\n          height: 5.h,\n        ),\n        createProductBrandDropDown(context),\n        SizedBox(\n          height: 20.h,\n        ),\n        CommonTextRegular(\n          text: LocaleKeys.priceRange.tr,\n          size: 16.sp,\n          fontWeight: FontWeight.w400,\n          fontFamilyType: FontFamilyType.productSansBold,\n        ),\n        SizedBox(\n          height: 5.h,\n        ),\n        Obx(() {\n          return SliderTheme(\n            data: SliderThemeData(\n              valueIndicatorTextStyle:\n                  context.textTheme.labelMedium?.copyWith(color: context.theme.cardColor),\n            ),\n            child: Slider(\n              value: controller.searchFilterValue.value.priceRange?.value ?? 0,\n              max: 20000,\n              divisions: 2,\n              inactiveColor: context.theme.colorScheme.secondary,\n              label: controller.searchFilterValue.value.priceRange?.round().toString(),\n              onChanged: (double value) {\n                controller.searchFilterValue.value =\n                    controller.searchFilterValue.value.copyWith(priceRange: value.obs);\n              },\n            ),\n          );\n        }),\n        SizedBox(\n          height: 20.h,\n        ),\n        CommonTextRegular(\n          text: LocaleKeys.ratings.tr,\n          size: 16.sp,\n          fontWeight: FontWeight.w400,\n          fontFamilyType: FontFamilyType.productSansBold,\n        ),\n        SizedBox(\n          height: 5.h,\n        ),\n        createRatingsWidget(context),\n        SizedBox(\n          height: 20.h,\n        ),\n        Row(\n          children: [\n            Expanded(\n              child: CommonButton.custom(\n                onTap: () => Get.back(result: controller.searchFilterValue.value),\n                text: LocaleKeys.reset.tr,\n                outLineColor: context.theme.primaryColor,\n                isBordered: true,\n                textColor: context.theme.colorScheme.primary,\n              ),\n            ),\n            SizedBox(\n              width: 15.w,\n            ),\n            Expanded(\n              child: CommonButton.custom(\n                onTap: () => Get.back(\n                  result: controller.searchFilterValue.value,\n                ),\n                text: LocaleKeys.apply.tr,\n              ),\n            ),\n          ],\n        ),\n      ],\n    );\n  }\n\n  Wrap createRatingsWidget(BuildContext context) {\n    return Wrap(\n      crossAxisAlignment: WrapCrossAlignment.center,\n      spacing: 22.w,\n      children: List.generate(DataProvider.getRatingDataProvider().length, (index) {\n        return GestureDetector(\n          onTap: () => controller.onTapRating(index),\n          child: Obx(() {\n            return Container(\n              height: 71.h,\n              width: 51.w,\n              decoration: BoxDecoration(\n                color: (controller.selectedRatingIndex.value ==\n                        DataProvider.getRatingDataProvider()[index].rating)\n                    ? context.theme.primaryColor\n                    : context.theme.cardColor,\n                borderRadius: BorderRadius.circular(40.r),\n                border: Border.all(color: context.theme.colorScheme.secondary),\n              ),\n              child: Column(\n                mainAxisAlignment: MainAxisAlignment.center,\n                children: [\n                  SvgPicture.asset(\n                    SVGPath.star,\n                    height: 19.h,\n                    width: 19.w,\n                  ),\n                  SizedBox(\n                    height: 5.h,\n                  ),\n                  CommonTextRegular(\n                    text: DataProvider.getRatingDataProvider()[index].rating.toString(),\n                    size: 14.sp,\n                    fontWeight: FontWeight.w700,\n                    fontFamilyType: FontFamilyType.productSansBold,\n                    color: (controller.selectedRatingIndex.value ==\n                            DataProvider.getRatingDataProvider()[index].rating)\n                        ? context.theme.cardColor\n                        : context.theme.colorScheme.scrim,\n                  ),\n                ],\n              ),\n            );\n          }),\n        );\n      }),\n    );\n  }\n\n  Widget createProductTypeDropDown(BuildContext context) {\n    return ButtonTheme.fromButtonThemeData(\n      data: const ButtonThemeData(\n        padding: EdgeInsets.zero,\n        textTheme: ButtonTextTheme.accent,\n        alignedDropdown: true,\n      ),\n      child: DropdownButtonFormField<ProductTypeModel>(\n        isExpanded: true,\n        borderRadius: BorderRadius.circular(15.r),\n        decoration: getInputDecoration(context),\n        padding: EdgeInsets.zero,\n        key: UniqueKey(),\n        icon: const Icon(\n          Icons.keyboard_arrow_down,\n        ).paddingSymmetric(horizontal: 8.w),\n        hint: Row(\n          children: [\n            CommonTextRegular(\n              text: LocaleKeys.select.tr,\n              size: 14.sp,\n              color: context.theme.colorScheme.primaryContainer.withOpacity(0.75),\n            ),\n          ],\n        ),\n        value: controller.searchFilterValue.value.productTypeModel,\n        validator: (value) => (value == null) ? LocaleKeys.required.tr : null,\n        items: controller.productTypeList.map((ProductTypeModel value) {\n          return DropdownMenuItem<ProductTypeModel>(\n            value: value,\n            child: Row(\n              children: [\n                CommonTextRegular(\n                  text: value.name,\n                  size: 14.sp,\n                ),\n              ],\n            ),\n          );\n        }).toList(),\n        onChanged: (item) {\n          if (item != null) {\n            controller.searchFilterValue.value =\n                controller.searchFilterValue.value.copyWith(productTypeModel: item);\n          }\n        },\n      ),\n    );\n  }\n\n  Widget createProductBrandDropDown(BuildContext context) {\n    return ButtonTheme.fromButtonThemeData(\n      data: const ButtonThemeData(\n        padding: EdgeInsets.zero,\n        textTheme: ButtonTextTheme.accent,\n        alignedDropdown: true,\n      ),\n      child: DropdownButtonFormField<ProductBrandModel>(\n        isExpanded: true,\n        borderRadius: BorderRadius.circular(15.r),\n        decoration: getInputDecoration(context),\n        padding: EdgeInsets.zero,\n        key: UniqueKey(),\n        icon: const Icon(\n          Icons.keyboard_arrow_down,\n        ).paddingSymmetric(horizontal: 8.w),\n        hint: Row(\n          children: [\n            CommonTextRegular(\n              text: LocaleKeys.select.tr,\n              size: 14.sp,\n              color: context.theme.colorScheme.primaryContainer.withOpacity(0.75),\n            ),\n          ],\n        ),\n        value: controller.searchFilterValue.value.productBrandModel,\n        validator: (value) => (value == null) ? LocaleKeys.required.tr : null,\n        items: controller.productBrandList.map((ProductBrandModel value) {\n          return DropdownMenuItem<ProductBrandModel>(\n            value: value,\n            child: Row(\n              children: [\n                CommonTextRegular(\n                  text: value.name,\n                  size: 14.sp,\n                ),\n              ],\n            ),\n          );\n        }).toList(),\n        onChanged: (item) {\n          if (item != null) {\n            controller.searchFilterValue.value =\n                controller.searchFilterValue.value.copyWith(productBrandModel: item);\n          }\n        },\n      ),\n    );\n  }\n\n  InputDecoration getInputDecoration(BuildContext context) {\n    return InputDecoration(\n      filled: true,\n      fillColor: Get.theme.colorScheme.secondary,\n      disabledBorder: getBorder(\n        context,\n        context.theme.colorScheme.secondary,\n        borderRadius: 40.r,\n      ),\n      enabledBorder: getBorder(\n        context,\n        context.theme.colorScheme.secondary,\n        borderRadius: 40.r,\n      ),\n      focusedBorder: getBorder(\n        context,\n        context.theme.colorScheme.secondary,\n        borderRadius: 40.r,\n      ),\n      errorBorder: getBorder(\n        context,\n        context.theme.colorScheme.error,\n        borderRadius: 40.r,\n      ),\n      focusedErrorBorder: getBorder(\n        context,\n        context.theme.colorScheme.error,\n        borderRadius: 40.r,\n      ),\n      border: getBorder(\n        context,\n        context.theme.colorScheme.secondary,\n        borderRadius: 40.r,\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/filters/views/filters_view.dart b/lib/ui/dashboard/filters/views/filters_view.dart
+--- a/lib/ui/dashboard/filters/views/filters_view.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/filters/views/filters_view.dart	(date 1722003703813)
+@@ -58,8 +58,8 @@
+             ),
+             child: Slider(
+               value: controller.searchFilterValue.value.priceRange?.value ?? 0,
+-              max: 20000,
+-              divisions: 2,
++              max: 1000,
++              divisions: 20,
+               inactiveColor: context.theme.colorScheme.secondary,
+               label: controller.searchFilterValue.value.priceRange?.round().toString(),
+               onChanged: (double value) {
+@@ -89,7 +89,7 @@
+           children: [
+             Expanded(
+               child: CommonButton.custom(
+-                onTap: () => Get.back(result: controller.searchFilterValue.value),
++                onTap: () => Get.back(result: [true, controller.searchFilterValue.value]),
+                 text: LocaleKeys.reset.tr,
+                 outLineColor: context.theme.primaryColor,
+                 isBordered: true,
+@@ -102,7 +102,7 @@
+             Expanded(
+               child: CommonButton.custom(
+                 onTap: () => Get.back(
+-                  result: controller.searchFilterValue.value,
++                  result: [false, controller.searchFilterValue.value],
+                 ),
+                 text: LocaleKeys.apply.tr,
+               ),
+Index: lib/models/remote/product_model.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\n\nclass ProductModel {\n  String? pid;\n  String? url;\n  String? title;\n  String? platform;\n  String? productCategory;\n  List<String>? imageUrls;\n  List<String>? affectedAreaCategory;\n  List<String>? affectedAreaSubcategory;\n  List<String>? possibleSkinConditions;\n  String? sephoraPid;\n  String? namshiPid;\n  String? noonPid;\n  String? iherbPid;\n  String? brand;\n  dynamic price;\n  String? currency;\n  dynamic avgRating;\n  dynamic score;\n  String? creationDate;\n  String? updateDate;\n  bool? active;\n\n  RxInt get storeCount {\n    int count = 0;\n    if (sephoraPid != null && (sephoraPid ?? '').isNotEmpty && sephoraPid != pid) {\n      count++;\n    }\n    if (namshiPid != null && (namshiPid ?? '').isNotEmpty && namshiPid != pid) {\n      count++;\n    }\n    if (noonPid != null && (noonPid ?? '').isNotEmpty && noonPid != pid) {\n      count++;\n    }\n    if (iherbPid != null && (iherbPid ?? '').isNotEmpty && iherbPid != pid) {\n      count++;\n    }\n    return count.obs;\n  }\n\n  List<String> get otherStorePId {\n    List<String> pIds = [];\n    if (sephoraPid != null && (sephoraPid ?? '').isNotEmpty && sephoraPid != pid) {\n      pIds.add(sephoraPid ?? '');\n    } else if (namshiPid != null && (namshiPid ?? '').isNotEmpty && namshiPid != pid) {\n      pIds.add(namshiPid ?? '');\n    } else if (noonPid != null && (noonPid ?? '').isNotEmpty && noonPid != pid) {\n      pIds.add(noonPid ?? '');\n    } else if (iherbPid != null && (iherbPid ?? '').isNotEmpty && iherbPid != pid) {\n      pIds.add(iherbPid ?? '');\n    }\n    return pIds;\n  }\n\n  String? getPriceFormat(dynamic price) {\n    if (price is int) {\n      return price.toStringAsFixed(2);\n    } else if (price is String?) {\n      return int.parse(price ?? '0').toStringAsFixed(2);\n    } else if (price is double?) {\n      return (price ?? 0).toStringAsFixed(2);\n    }\n    return '';\n  }\n\n  ProductModel({\n    this.pid,\n    this.url,\n    this.title,\n    this.platform,\n    this.productCategory,\n    this.imageUrls,\n    this.affectedAreaCategory,\n    this.affectedAreaSubcategory,\n    this.possibleSkinConditions,\n    this.sephoraPid,\n    this.namshiPid,\n    this.noonPid,\n    this.iherbPid,\n    this.brand,\n    this.price,\n    this.currency,\n    this.avgRating,\n    this.score,\n    this.creationDate,\n    this.updateDate,\n    this.active,\n  });\n\n  factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(\n        pid: json['PID'],\n        url: json['url'],\n        title: json['title'],\n        platform: json['platform'],\n        productCategory: json['product_category'],\n        imageUrls:\n            json['image_urls'] == null ? [] : List<String>.from(json['image_urls']!.map((x) => x)),\n        affectedAreaCategory: json['affected_area_category'] == null\n            ? []\n            : List<String>.from(json['affected_area_category']!.map((x) => x)),\n        affectedAreaSubcategory: json['affected_area_subcategory'] == null\n            ? []\n            : List<String>.from(json['affected_area_subcategory']!.map((x) => x)),\n        possibleSkinConditions: json['possible_skin_conditions'] == null\n            ? []\n            : List<String>.from(json['possible_skin_conditions']!.map((x) => x)),\n        sephoraPid: json['sephora_PID'],\n        namshiPid: json['namshi_PID'],\n        noonPid: json['noon_PID'],\n        iherbPid: json['iherb_PID'],\n        brand: json['brand'],\n        price: json['price']?.toDouble(),\n        currency: json['currency'],\n        avgRating: json['avg_rating'],\n        score: json['score'],\n        creationDate: json['creation_date'],\n        updateDate: json['update_date'],\n        active: json['active'],\n      );\n\n  Map<String, dynamic> toJson() => {\n        'PID': pid,\n        'url': url,\n        'title': title,\n        'platform': platform,\n        'product_category': productCategory,\n        'image_urls': imageUrls == null ? [] : List<dynamic>.from(imageUrls!.map((x) => x)),\n        'affected_area_category': affectedAreaCategory == null\n            ? []\n            : List<dynamic>.from(affectedAreaCategory!.map((x) => x)),\n        'affected_area_subcategory': affectedAreaSubcategory == null\n            ? []\n            : List<dynamic>.from(affectedAreaSubcategory!.map((x) => x)),\n        'possible_skin_conditions': possibleSkinConditions == null\n            ? []\n            : List<dynamic>.from(possibleSkinConditions!.map((x) => x)),\n        'sephora_PID': sephoraPid,\n        'namshi_PID': namshiPid,\n        'noon_PID': noonPid,\n        'iherb_PID': iherbPid,\n        'brand': brand,\n        'price': price,\n        'currency': currency,\n        'avg_rating': avgRating,\n        'score': score,\n        'creation_date': creationDate,\n        'update_date': updateDate,\n        'active': active,\n      };\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/models/remote/product_model.dart b/lib/models/remote/product_model.dart
+--- a/lib/models/remote/product_model.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/models/remote/product_model.dart	(date 1722002751212)
+@@ -149,4 +149,14 @@
+         'update_date': updateDate,
+         'active': active,
+       };
++
++  String getScore() {
++    if (score is double?) {
++      return (score as double).toStringAsFixed(1);
++    } else if (score is int?) {
++      return (score as int).toStringAsFixed(1);
++    } else {
++      return score;
++    }
++  }
+ }
+Index: lib/ui/dashboard/popular_products/bindings/popular_products_binding.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\n\nimport '../controllers/popular_products_controller.dart';\n\nclass PopularProductsBinding extends Bindings {\n  @override\n  void dependencies() {\n    Get.lazyPut<PopularProductsController>(\n      PopularProductsController.new,\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/popular_products/bindings/popular_products_binding.dart b/lib/ui/dashboard/popular_products/bindings/popular_products_binding.dart
+--- a/lib/ui/dashboard/popular_products/bindings/popular_products_binding.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/popular_products/bindings/popular_products_binding.dart	(date 1721999477293)
+@@ -1,12 +1,14 @@
+ import 'package:get/get.dart';
++import 'package:skin_match/usecase/product_usecase.dart';
+ 
+ import '../controllers/popular_products_controller.dart';
+ 
+ class PopularProductsBinding extends Bindings {
+   @override
+   void dependencies() {
++    Get.lazyPut(() => ProductUseCase(Get.find()));
+     Get.lazyPut<PopularProductsController>(
+-      PopularProductsController.new,
++      () => PopularProductsController(Get.find<ProductUseCase>()),
+     );
+   }
+ }
+Index: lib/ui/dashboard/popular_products/controllers/popular_products_controller.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/common_bottom_sheet.dart';\nimport 'package:skin_match/models/local/search_filter.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';\nimport 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';\n\nclass PopularProductsController extends GlobalGetXController {\n  List<ProductModel> productList = [];\n  Rxn<SearchFilter> selectedFilterOption = Rxn();\n\n  @override\n  void onInit() {\n    super.onInit();\n    prepareList();\n  }\n\n  void prepareList() {\n    productList.addAll([\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n    ]);\n  }\n\n  ProductModel productModel1 = const ProductModel(\n    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',\n    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description:\n        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',\n    isFavorite: true,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n    ],\n  );\n  ProductModel productModel2 = const ProductModel(\n    name: 'NIVEA Pearl',\n    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description: 'NIVEA Pearl and Beauty 50ml',\n    isFavorite: false,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n    ],\n  );\n\n  void onTapFilterOption(BuildContext context) async {\n    if (!(Get.isRegistered<FiltersController>())) {\n      Get.lazyPut<FiltersController>(\n        FiltersController.new,\n      );\n    }\n    var result = await Get.bottomSheet(\n      settings: RouteSettings(\n        arguments: {'selected_filter_option': selectedFilterOption.value},\n      ),\n      isScrollControlled: true,\n      CommonBottomSheet(\n        height: 580.h,\n        title: LocaleKeys.filters.tr,\n        childWidget: const FiltersView(),\n      ),\n    );\n    if (result != null && selectedFilterOption.value != result) {\n      selectedFilterOption.value = result;\n      Logger.write('@158 Filter Option : ${selectedFilterOption.value}');\n      //Todo request data\n    } else {\n      Logger.write('@161 Filter Option : ${selectedFilterOption.value}');\n      selectedFilterOption.value = SearchFilter();\n      if (selectedFilterOption.value != result) {\n        selectedFilterOption.value = null;\n        //Todo request data\n      }\n    }\n  }\n\n  void onStoreTap(int index) {\n    Get.bottomSheet(\n      CommonBottomSheet(\n        onClose: Get.back,\n        height: 400.h,\n        title: LocaleKeys.productAvailableOn.tr,\n        childWidget: StoreBottomSheetWidget(\n          productModel: productList[index],\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/popular_products/controllers/popular_products_controller.dart b/lib/ui/dashboard/popular_products/controllers/popular_products_controller.dart
+--- a/lib/ui/dashboard/popular_products/controllers/popular_products_controller.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/popular_products/controllers/popular_products_controller.dart	(date 1722003785477)
+@@ -1,127 +1,30 @@
++import 'dart:collection';
++
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/common/app_common_exports.dart';
+ import 'package:skin_match/core/widgets/common_bottom_sheet.dart';
+ import 'package:skin_match/models/local/search_filter.dart';
+-import 'package:skin_match/models/local/product_model.dart';
++import 'package:skin_match/models/remote/product_model.dart';
+ import 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';
+ import 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';
+-import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';
++import 'package:skin_match/ui/dashboard/search/views/widget/search_store_bottom_sheet_widget.dart';
++import 'package:skin_match/usecase/product_usecase.dart';
+ 
+ class PopularProductsController extends GlobalGetXController {
+-  List<ProductModel> productList = [];
++  ProductUseCase productUseCase;
++
++  PopularProductsController(this.productUseCase);
++
+   Rxn<SearchFilter> selectedFilterOption = Rxn();
+ 
+-  @override
+-  void onInit() {
+-    super.onInit();
+-    prepareList();
+-  }
++  RxList<ProductModel> productList = <ProductModel>[].obs;
++  RxInt totalSearchCount = 0.obs;
++  int pageNumber = 1;
++  RxBool isLoadMore = false.obs;
++  RxBool isMoreData = true.obs;
++  RxBool isLoading = false.obs;
+ 
+-  void prepareList() {
+-    productList.addAll([
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-    ]);
+-  }
+-
+-  ProductModel productModel1 = const ProductModel(
+-    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',
+-    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description:
+-        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',
+-    isFavorite: true,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-    ],
+-  );
+-  ProductModel productModel2 = const ProductModel(
+-    name: 'NIVEA Pearl',
+-    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description: 'NIVEA Pearl and Beauty 50ml',
+-    isFavorite: false,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-    ],
+-  );
++  ScrollController scrollController = ScrollController();
+ 
+   void onTapFilterOption(BuildContext context) async {
+     if (!(Get.isRegistered<FiltersController>())) {
+@@ -140,30 +43,131 @@
+         childWidget: const FiltersView(),
+       ),
+     );
+-    if (result != null && selectedFilterOption.value != result) {
+-      selectedFilterOption.value = result;
+-      Logger.write('@158 Filter Option : ${selectedFilterOption.value}');
+-      //Todo request data
+-    } else {
+-      Logger.write('@161 Filter Option : ${selectedFilterOption.value}');
+-      selectedFilterOption.value = SearchFilter();
+-      if (selectedFilterOption.value != result) {
+-        selectedFilterOption.value = null;
+-        //Todo request data
++    if (result != null) {
++      if (result is List<dynamic>) {
++        if (result[0] == false) {
++          selectedFilterOption.value = result[1];
++          Logger.write('@158 Filter Option : ${selectedFilterOption.value}');
++          pageNumber = 1;
++          getProductList(page: 1);
++        } else {
++          Logger.write('@161 Filter Option : ${selectedFilterOption.value}');
++          selectedFilterOption.value = SearchFilter();
++          selectedFilterOption.value = null;
++          pageNumber = 1;
++          getProductList(page: 1);
++        }
+       }
+     }
+   }
++
++  Future<void> getProductList({int? page}) async {
++    Map<String, dynamic> params = HashMap();
++    params['page'] = page ?? pageNumber;
++    params['page_size'] = 10;
++    if (selectedFilterOption.value?.selectedRating != null &&
++        selectedFilterOption.value?.selectedRating?.rating != 0) {
++      params['min_avg_rating'] = selectedFilterOption.value?.selectedRating?.rating ?? 5;
++    }
++    if (selectedFilterOption.value?.priceRange != null &&
++        selectedFilterOption.value?.priceRange?.value != 0) {
++      params['min_price'] = 0;
++      params['max_price'] = selectedFilterOption.value?.priceRange?.value.toStringAsFixed(0);
++    }
++    // 'categories': 'Cleanser',
++
++    Logger.write('Request : $params');
+ 
+-  void onStoreTap(int index) {
+-    Get.bottomSheet(
+-      CommonBottomSheet(
+-        onClose: Get.back,
+-        height: 400.h,
+-        title: LocaleKeys.productAvailableOn.tr,
+-        childWidget: StoreBottomSheetWidget(
+-          productModel: productList[index],
+-        ),
+-      ),
+-    );
++    try {
++      if (page == 1) {
++        productList.clear();
++        progressService.showProgressDialog(true);
++        isLoading.value = true;
++      } else {
++        isLoadMore.value = true;
++      }
++      var response = await productUseCase.getPopularProductList(params);
++      response.fold((l) {
++        l.getException();
++      }, (r) async {
++        if (r.data != null) {
++          isMoreData.value = r.data?.length == 10;
++          if (page == 1) {
++            productList.value = List.from(r.data ?? []);
++          } else {
++            productList.addAll(List.from(r.data ?? []));
++          }
++        }
++      });
++    } catch (e, sta) {
++      Logger.write('@76::::${sta.toString()}');
++    } finally {
++      if (page == 1) {
++        progressService.showProgressDialog(false);
++        isLoading.value = false;
++      } else {
++        isLoadMore.value = false;
++      }
++    }
++  }
++
++  void addListeners() {
++    scrollController.addListener(() async {
++      if (scrollController.position.pixels == scrollController.position.maxScrollExtent &&
++          isMoreData.isTrue) {
++        pageNumber++;
++        await getProductList(page: pageNumber);
++      }
++    });
++  }
++
++  void onStoreTap(int index) async {
++    try {
++      Map<String, dynamic> params = {
++        for (int i = 0; i < productList[index].otherStorePId.length; i++)
++          'PIDs': productList[index].otherStorePId[i],
++      };
++      progressService.showProgressDialog(true);
++      var response = await productUseCase.getProductByPID(params);
++      response.fold((l) {
++        l.getException();
++      }, (otherStoreList) async {
++        if (otherStoreList.isNotEmpty) {
++          Get.bottomSheet(
++            CommonBottomSheet(
++              onClose: Get.back,
++              height: 400.h,
++              title: LocaleKeys.productAvailableOn.tr,
++              childWidget: SearchStoreBottomSheetWidget(
++                list: otherStoreList,
++              ),
++            ),
++          );
++        }
++      });
++    } catch (e, sta) {
++      Logger.write('@76::::${sta.toString()}');
++    } finally {
++      progressService.showProgressDialog(false);
++    }
++  }
++
++  @override
++  void onReady() {
++    super.onReady();
++    pageNumber = 1;
++    getProductList(page: 1);
++  }
++
++  @override
++  void onInit() {
++    super.onInit();
++    addListeners();
++  }
++
++  @override
++  void dispose() {
++    scrollController.dispose();
++    super.dispose();
+   }
+ }
+Index: lib/ui/dashboard/popular_products/views/popular_products_view.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/app_common_back_button.dart';\nimport 'package:skin_match/ui/dashboard/home/views/widget/product_card.dart';\n\nimport '../controllers/popular_products_controller.dart';\n\nclass PopularProductsView extends GetView<PopularProductsController> {\n  const PopularProductsView({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: CommonAppbar(\n        title: LocaleKeys.popularProducts.tr,\n        actions: [\n          GestureDetector(\n            onTap: () => controller.onTapFilterOption(context),\n            child: SvgPicture.asset(\n              SVGPath.filterIcon,\n              height: 24.h,\n              width: 24.h,\n            ),\n          ),\n        ],\n      ),\n      body: SafeArea(\n        child: Padding(\n          padding: EdgeInsets.symmetric(horizontal: 24.w),\n          child: ListView.separated(\n            padding: EdgeInsets.symmetric(vertical: 24.h),\n            itemCount: controller.productList.length,\n            itemBuilder: (context, index) {\n              return Directionality(\n                textDirection: TextDirection.ltr,\n                child: ProductCard(\n                  width: Get.width,\n                  productModel: controller.productList[index],\n                  onTapFavorite: () {}, onStoreTap: () =>controller.onStoreTap(index),\n                ),\n              );\n            },\n            separatorBuilder: (BuildContext context, int index) {\n              return SizedBox(\n                height: 16.h,\n              );\n            },\n          ),\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/popular_products/views/popular_products_view.dart b/lib/ui/dashboard/popular_products/views/popular_products_view.dart
+--- a/lib/ui/dashboard/popular_products/views/popular_products_view.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/popular_products/views/popular_products_view.dart	(date 1721999477334)
+@@ -1,6 +1,7 @@
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/common/app_common_exports.dart';
+ import 'package:skin_match/core/widgets/app_common_back_button.dart';
++import 'package:skin_match/core/widgets/load_more.dart';
+ import 'package:skin_match/ui/dashboard/home/views/widget/product_card.dart';
+ 
+ import '../controllers/popular_products_controller.dart';
+@@ -27,24 +28,43 @@
+       body: SafeArea(
+         child: Padding(
+           padding: EdgeInsets.symmetric(horizontal: 24.w),
+-          child: ListView.separated(
+-            padding: EdgeInsets.symmetric(vertical: 24.h),
+-            itemCount: controller.productList.length,
+-            itemBuilder: (context, index) {
+-              return Directionality(
+-                textDirection: TextDirection.ltr,
+-                child: ProductCard(
+-                  width: Get.width,
+-                  productModel: controller.productList[index],
+-                  onTapFavorite: () {}, onStoreTap: () =>controller.onStoreTap(index),
+-                ),
+-              );
+-            },
+-            separatorBuilder: (BuildContext context, int index) {
+-              return SizedBox(
+-                height: 16.h,
+-              );
+-            },
++          child: Obx(
++            () => controller.isLoading.isTrue
++                ? const Offstage()
++                : controller.productList.isNotEmpty
++                    ? Column(
++                        children: [
++                          Expanded(
++                            child: ListView.separated(
++                              physics: const BouncingScrollPhysics(),
++                              controller: controller.scrollController,
++                              padding: EdgeInsets.only(bottom: 20.h),
++                              itemBuilder: (context, index) => GestureDetector(
++                                onTap: () {},
++                                child: Directionality(
++                                  textDirection: TextDirection.ltr,
++                                  child: ProductCard(
++                                    productModel: controller.productList[index],
++                                    onTapFavorite: () {},
++                                    onStoreTap: () => controller.onStoreTap(index),
++                                  ),
++                                ),
++                              ),
++                              separatorBuilder: (context, index) => SizedBox(
++                                height: 20.h,
++                              ),
++                              itemCount: controller.productList.length,
++                            ),
++                          ),
++                          Obx(
++                            () => SizedBox(height: controller.isLoadMore.value ? 10.h : 0),
++                          ),
++                          Obx(
++                            () => controller.isLoadMore.value ? const LoadMore() : const Offstage(),
++                          ),
++                        ],
++                      )
++                    : const Offstage(),
+           ),
+         ),
+       ),
+Index: lib/core/di/api_provider.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:skin_match/core/common/app_common_exports.dart';\n\nabstract class IApiProvider {\n  Future<ResponseHandler?> login(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> skinConditionList();\n\n  Future<ResponseHandler?> countryList();\n\n  Future<ResponseHandler?> sendOtp(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> forgotPassword(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> verifyOTP(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> resetPassword(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> deleteAccount();\n\n  Future<ResponseHandler?> register(Map<String, dynamic> body);\n\n  Future<ResponseHandler?> userDetail();\n\n  Future<ResponseHandler?> updateProfile(Map<String, dynamic> body);\n\n  Future<ResponseHandler?> changePassword(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> sendFeedback(\n    Map<String, dynamic> request,\n    Map<String, File?> image,\n  );\n\n  Future<ResponseHandler?> getCmsDetail(String slug, int languageId);\n\n  Future<ResponseHandler?> searchProductList(Map<String, dynamic> params);\n\n  Future<ResponseHandler?> getProductByPID(Map<String, dynamic> pId);\n\n  Future<ResponseHandler?> getAffectedAreaList();\n\n  Future<ResponseHandler?> getSubAffectedAreaList(int id);\n\n  Future<ResponseHandler?> verifyAffectedAreas(Map<String, dynamic> request);\n\n  Future<ResponseHandler?> updateLanguage(int languageId);\n}\n\nclass ApiProvider extends IApiProvider {\n  final BaseApiProvider iBaseApiProvider;\n\n  ApiProvider(this.iBaseApiProvider);\n\n  @override\n  Future<ResponseHandler?> login(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.login,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> forgotPassword(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.forgotPassword,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> verifyOTP(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.verifyOTP,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> resetPassword(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.resetPassword,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> deleteAccount() async {\n    try {\n      var response = await iBaseApiProvider.postMethod(ApiClient.deleteAccount, {});\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@96 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> skinConditionList() async {\n    try {\n      var response = await iBaseApiProvider.getMethod(\n        ApiClient.skinConditionList,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> countryList() async {\n    try {\n      var response = await iBaseApiProvider.getMethod(\n        ApiClient.countryList,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> register(Map<String, dynamic> body) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.register,\n        body,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('Register error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> userDetail() async {\n    try {\n      var response = await iBaseApiProvider.getMethod(\n        ApiClient.userDetail,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('User Detail error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> updateProfile(Map<String, dynamic> body) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.updateProfile,\n        body,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('User Detail error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> sendOtp(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.sendOTP,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('User Detail error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> changePassword(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.changePassword,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> sendFeedback(\n    Map<String, dynamic> request,\n    Map<String, File?> image,\n  ) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.submitFeedback,\n        request,\n        imageFiles: image,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> getCmsDetail(String slug, int languageId) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        '${ApiClient.cmsPage}/$slug',\n        {'lang': languageId},\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> searchProductList(Map<String, dynamic> params) async {\n    try {\n      var response = await iBaseApiProvider.getMethodTaha(\n        ApiClient.searchProducts,\n        query: params,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> getProductByPID(Map<String, dynamic> pId) async {\n    try {\n      var response = await iBaseApiProvider.postMethodTaha(\n        ApiClient.productsByPid,\n        pId,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> getAffectedAreaList() async {\n    try {\n      var response = await iBaseApiProvider.getMethod(\n        ApiClient.getAffectedAreaList,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> getSubAffectedAreaList(int id) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.getSubAffectedAreaList,\n        {'affected_area_id': id},\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> verifyAffectedAreas(Map<String, dynamic> request) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.verifyAffectedAreas,\n        request,\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('@42 error is $e $s');\n      rethrow;\n    }\n  }\n\n  @override\n  Future<ResponseHandler?> updateLanguage(int languageId) async {\n    try {\n      var response = await iBaseApiProvider.postMethod(\n        ApiClient.updateLanguage,\n        {'lang': languageId},\n      );\n      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);\n      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;\n      return responseHandler;\n    } on Exception catch (e, s) {\n      Logger.write('User Detail error is $e $s');\n      rethrow;\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/core/di/api_provider.dart b/lib/core/di/api_provider.dart
+--- a/lib/core/di/api_provider.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/core/di/api_provider.dart	(date 1721999574747)
+@@ -43,6 +43,8 @@
+   Future<ResponseHandler?> verifyAffectedAreas(Map<String, dynamic> request);
+ 
+   Future<ResponseHandler?> updateLanguage(int languageId);
++
++  Future<ResponseHandler?> getPopularProductList(Map<String, dynamic> params);
+ }
+ 
+ class ApiProvider extends IApiProvider {
+@@ -366,4 +368,20 @@
+       rethrow;
+     }
+   }
++
++  @override
++  Future<ResponseHandler?> getPopularProductList(Map<String, dynamic> params) async {
++    try {
++      var response = await iBaseApiProvider.getMethodTaha(
++        ApiClient.popularProducts,
++        query: params,
++      );
++      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);
++      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;
++      return responseHandler;
++    } on Exception catch (e, s) {
++      Logger.write('@42 error is $e $s');
++      rethrow;
++    }
++  }
+ }
+Index: lib/ui/dashboard/home/views/home_view.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:carousel_slider/carousel_slider.dart';\nimport 'package:fpdart/fpdart.dart';\nimport 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/pick_image_option_widget.dart';\nimport 'package:skin_match/ui/dashboard/home/views/widget/pick_image_card.dart';\nimport 'package:skin_match/ui/dashboard/home/views/widget/product_card.dart';\n\nimport 'package:skin_match/ui/dashboard/home/controllers/home_controller.dart';\n\nclass HomeView extends GetView<HomeController> {\n  const HomeView({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      backgroundColor: context.theme.scaffoldBackgroundColor,\n      body: Stack(\n        children: [\n          Image.asset(\n            PNGPath.homeScreenBg,\n            height: 496.h,\n            fit: BoxFit.fill,\n            width: Get.width,\n          ),\n          SafeArea(\n            bottom: false,\n            child: Column(\n              children: [\n                SizedBox(height: 10.h),\n                buildHeaderView().paddingSymmetric(horizontal: 24.w),\n                SizedBox(height: 10.h),\n                Expanded(\n                  child: SingleChildScrollView(\n                    padding: EdgeInsets.only(top: 10.h, bottom: Platform.isAndroid ? 150.h : 124.h),\n                    child: Directionality(\n                      textDirection: TextDirection.ltr,\n                      child: Column(\n                        mainAxisSize: MainAxisSize.min,\n                        children: [\n                          buildDescriptionView().paddingSymmetric(horizontal: 24.w),\n                          Row(\n                            mainAxisAlignment: MainAxisAlignment.spaceBetween,\n                            children: [\n                              PickImageOption.camera(\n                                onTap: () => controller.onTapPickImage(MediaOptionEnum.camera),\n                              ),\n                              PickImageOption.gallery(\n                                onTap: () => controller.onTapPickImage(MediaOptionEnum.gallery),\n                              ),\n                            ],\n                          ).paddingSymmetric(horizontal: 24.w),\n                          SizedBox(\n                            height: 20.h,\n                          ),\n                          Directionality(\n                            textDirection: controller.sharedPreferenceService.language.value == 1\n                                ? TextDirection.rtl\n                                : TextDirection.ltr,\n                            child: CommonTextField(\n                              textEditController: TextEditingController(),\n                              focusNode: FocusNode(),\n                              prefixIcon: Padding(\n                                padding: EdgeInsets.all(14.w),\n                                child: SvgPicture.asset(\n                                  SVGPath.searchIcon,\n                                ),\n                              ),\n                              textInputType: TextInputType.text,\n                              labelText: LocaleKeys.search.tr,\n                              onTap: () => Get.toNamed(Routes.SEARCH),\n                              isReadOnly: true,\n                              onValidate: (String? v) {\n                                return null;\n                              },\n                            ).paddingSymmetric(horizontal: 24.w),\n                          ),\n                          SizedBox(\n                            height: 20.h,\n                          ),\n                          Row(\n                            mainAxisAlignment: MainAxisAlignment.spaceBetween,\n                            children: [\n                              CommonTextRegular(\n                                text: LocaleKeys.popularProducts.tr,\n                                size: 20.sp,\n                                fontWeight: FontWeight.w500,\n                              ),\n                              GestureDetector(\n                                onTap: () => Get.toNamed(Routes.POPULAR_PRODUCTS),\n                                child: CommonTextRegular(\n                                  text: LocaleKeys.viewAll.tr,\n                                  size: 14.sp,\n                                  decorationColor: context.theme.primaryColor,\n                                  color: context.theme.primaryColor,\n                                  fontWeight: FontWeight.w700,\n                                ),\n                              ),\n                            ],\n                          ).paddingSymmetric(horizontal: 24.w),\n                          SizedBox(height: 20.h),\n                          CarouselSlider(\n                            items: controller.productList.mapWithIndex(\n                              (t, index) {\n                                return ProductCard(\n                                  productModel: controller.productList[index],\n                                  onTapFavorite: () {},\n                                  onStoreTap: () => controller.onStoreTap(index),\n                                ).marginSymmetric(horizontal: 0.w);\n                              },\n                            ).toList(),\n                            options: CarouselOptions(\n                              clipBehavior: Clip.none,\n                              enableInfiniteScroll: false,\n                              enlargeCenterPage: true,\n                              height: 180.h,\n                            ),\n                          ),\n                        ],\n                      ),\n                    ),\n                  ),\n                ),\n              ],\n            ),\n          ),\n        ],\n      ),\n    );\n  }\n\n  Row buildDescriptionView() {\n    return Row(\n      children: [\n        SvgPicture.asset(\n          SVGPath.scanSkinHome,\n          height: 152.h,\n          width: 108.w,\n          fit: BoxFit.fill,\n        ),\n        SizedBox(\n          width: 30.w,\n        ),\n        Expanded(\n          child: CommonTextRegular(\n            text: LocaleKeys.scanYourSkin.tr,\n            size: 16.sp,\n            lineHeight: 1.4,\n            color: Get.theme.colorScheme.primaryContainer.withOpacity(0.80),\n          ),\n        ),\n      ],\n    );\n  }\n\n  Row buildHeaderView() {\n    return Row(\n      mainAxisAlignment: MainAxisAlignment.spaceBetween,\n      children: [\n        Expanded(\n          child: Column(\n            crossAxisAlignment: CrossAxisAlignment.start,\n            children: [\n              CommonTextRegular(\n                text: LocaleKeys.helloUsername.tr,\n                size: 16.sp,\n              ),\n              Obx(\n                () => Directionality(\n                  textDirection: controller.sharedPreferenceService.language.value == 1\n                      ? TextDirection.rtl\n                      : TextDirection.ltr,\n                  child: CommonTextRegular(\n                    text: controller.sharedPreferenceService.name.value,\n                    fontWeight: FontWeight.w700,\n                    fontFamilyType: FontFamilyType.elMessiri,\n                    maxLine: 1,\n                    textOverflow: TextOverflow.ellipsis,\n                    size: 30.sp,\n                  ),\n                ),\n              ),\n            ],\n          ),\n        ),\n        SizedBox(width: 10.w),\n        GestureDetector(\n          onTap: () => Get.toNamed(Routes.PROFILE_SCREEN),\n          child: SvgPicture.asset(\n            SVGPath.user,\n            height: 53.h,\n            width: 53.w,\n          ),\n        ),\n      ],\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/home/views/home_view.dart b/lib/ui/dashboard/home/views/home_view.dart
+--- a/lib/ui/dashboard/home/views/home_view.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/home/views/home_view.dart	(date 1722003140966)
+@@ -78,43 +78,51 @@
+                           SizedBox(
+                             height: 20.h,
+                           ),
+-                          Row(
+-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+-                            children: [
+-                              CommonTextRegular(
+-                                text: LocaleKeys.popularProducts.tr,
+-                                size: 20.sp,
+-                                fontWeight: FontWeight.w500,
+-                              ),
+-                              GestureDetector(
+-                                onTap: () => Get.toNamed(Routes.POPULAR_PRODUCTS),
+-                                child: CommonTextRegular(
+-                                  text: LocaleKeys.viewAll.tr,
+-                                  size: 14.sp,
+-                                  decorationColor: context.theme.primaryColor,
+-                                  color: context.theme.primaryColor,
+-                                  fontWeight: FontWeight.w700,
+-                                ),
+-                              ),
+-                            ],
+-                          ).paddingSymmetric(horizontal: 24.w),
++                          Obx(
++                            () => controller.productList.isNotEmpty
++                                ? Row(
++                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
++                                    children: [
++                                      CommonTextRegular(
++                                        text: LocaleKeys.popularProducts.tr,
++                                        size: 20.sp,
++                                        fontWeight: FontWeight.w500,
++                                      ),
++                                      GestureDetector(
++                                        onTap: () => Get.toNamed(Routes.POPULAR_PRODUCTS),
++                                        child: CommonTextRegular(
++                                          text: LocaleKeys.viewAll.tr,
++                                          size: 14.sp,
++                                          decorationColor: context.theme.primaryColor,
++                                          color: context.theme.primaryColor,
++                                          fontWeight: FontWeight.w700,
++                                        ),
++                                      ),
++                                    ],
++                                  ).paddingSymmetric(horizontal: 24.w)
++                                : const Offstage(),
++                          ),
+                           SizedBox(height: 20.h),
+-                          CarouselSlider(
+-                            items: controller.productList.mapWithIndex(
+-                              (t, index) {
+-                                return ProductCard(
+-                                  productModel: controller.productList[index],
+-                                  onTapFavorite: () {},
+-                                  onStoreTap: () => controller.onStoreTap(index),
+-                                ).marginSymmetric(horizontal: 0.w);
+-                              },
+-                            ).toList(),
+-                            options: CarouselOptions(
+-                              clipBehavior: Clip.none,
+-                              enableInfiniteScroll: false,
+-                              enlargeCenterPage: true,
+-                              height: 180.h,
+-                            ),
++                          Obx(
++                            () => controller.productList.isNotEmpty
++                                ? CarouselSlider(
++                                    items: controller.productList.mapWithIndex(
++                                      (t, index) {
++                                        return ProductCard(
++                                          productModel: controller.productList[index],
++                                          onTapFavorite: () {},
++                                          onStoreTap: () {},
++                                        ).marginSymmetric(horizontal: 0.w);
++                                      },
++                                    ).toList(),
++                                    options: CarouselOptions(
++                                      clipBehavior: Clip.none,
++                                      enableInfiniteScroll: false,
++                                      enlargeCenterPage: true,
++                                      height: 180.h,
++                                    ),
++                                  )
++                                : const Offstage(),
+                           ),
+                         ],
+                       ),
+Index: lib/models/remote/popular_product_model.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/models/remote/popular_product_model.dart b/lib/models/remote/popular_product_model.dart
+new file mode 100644
+--- /dev/null	(date 1721998766332)
++++ b/lib/models/remote/popular_product_model.dart	(date 1721998766332)
+@@ -0,0 +1,104 @@
++class PopularProductModel {
++  String? pid;
++  String? platform;
++  String? title;
++  String? url;
++  int? price;
++  String? currency;
++  double? score;
++  double? avgRating;
++  String? brand;
++  String? productCategory;
++  List<String>? imageUrls;
++  List<String>? affectedAreaCategory;
++  List<String>? affectedAreaSubcategory;
++  List<String>? possibleSkinConditions;
++  String? sephoraPid;
++  String? namshiPid;
++  String? iherbPid;
++  String? noonPid;
++  String? creationDate;
++  String? updateDate;
++
++  PopularProductModel({
++    this.pid,
++    this.platform,
++    this.title,
++    this.url,
++    this.price,
++    this.currency,
++    this.score,
++    this.avgRating,
++    this.brand,
++    this.productCategory,
++    this.imageUrls,
++    this.affectedAreaCategory,
++    this.affectedAreaSubcategory,
++    this.possibleSkinConditions,
++    this.sephoraPid,
++    this.namshiPid,
++    this.iherbPid,
++    this.noonPid,
++    this.creationDate,
++    this.updateDate,
++  });
++
++  factory PopularProductModel.fromJson(Map<String, dynamic> json) => PopularProductModel(
++        pid: json['PID'],
++        platform: json['platform'],
++        title: json['title'],
++        url: json['url'],
++        price: json['price'],
++        currency: json['currency'],
++        score: json['score']?.toDouble(),
++        avgRating: json['avg_rating']?.toDouble(),
++        brand: json['brand'],
++        productCategory: json['product_category'],
++        imageUrls:
++            json['image_urls'] == null ? [] : List<String>.from(json['image_urls']!.map((x) => x)),
++        affectedAreaCategory: json['affected_area_category'] == null
++            ? []
++            : List<String>.from(json['affected_area_category']!.map((x) => x)),
++        affectedAreaSubcategory: json['affected_area_subcategory'] == null
++            ? []
++            : List<String>.from(json['affected_area_subcategory']!.map((x) => x)),
++        possibleSkinConditions: json['possible_skin_conditions'] == null
++            ? []
++            : List<String>.from(json['possible_skin_conditions']!.map((x) => x)),
++        sephoraPid: json['sephora_PID'],
++        namshiPid: json['namshi_PID'],
++        iherbPid: json['iherb_PID'],
++        noonPid: json['noon_PID'],
++        creationDate: json['creation_date'],
++        updateDate: json['update_date'],
++      );
++
++  Map<String, dynamic> toJson() => {
++        'PID': pid,
++        'platform': platform,
++        'title': title,
++        'url': url,
++        'price': price,
++        'currency': currency,
++        'score': score,
++        'avg_rating': avgRating,
++        'brand': brand,
++        'product_category': productCategory,
++        'image_urls': imageUrls == null ? [] : List<dynamic>.from(imageUrls!.map((x) => x)),
++        'affected_area_category': affectedAreaCategory == null
++            ? []
++            : List<dynamic>.from(affectedAreaCategory!.map((x) => x)),
++        'affected_area_subcategory': affectedAreaSubcategory == null
++            ? []
++            : List<dynamic>.from(affectedAreaSubcategory!.map((x) => x)),
++        'possible_skin_conditions': possibleSkinConditions == null
++            ? []
++            : List<dynamic>.from(possibleSkinConditions!.map((x) => x)),
++        'sephora_PID': sephoraPid,
++        'namshi_PID': namshiPid,
++        'iherb_PID': iherbPid,
++        'noon_PID': noonPid,
++        'creation_date': creationDate,
++        'update_date': updateDate,
++      };
++}
+Index: lib/ui/dashboard/base_view/controllers/base_controller.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/routes/route_exports.dart';\nimport 'package:skin_match/core/widgets/pick_image_option_widget.dart';\n\nenum BottomMenu { home, favorite }\n\nclass BaseController extends GlobalGetXController {\n  RxInt currentIndex = 0.obs;\n  var scaffoldKey = GlobalKey<ScaffoldState>(debugLabel: 'dashboardKey');\n\n  Future<void> onItemTapped(index) async {\n    currentIndex.value = index;\n    if (index == 0) getUserDetail(onSuccess: (res) {});\n    return index;\n  }\n\n  BaseController();\n\n  @override\n  void onInit() {\n    super.onInit();\n    setStatusColor();\n    getUserDetail(onSuccess: (response) {});\n  }\n\n/*\n  @pragma('vm:entry-point')\n  void getInitialNotificationMessage() {\n    FirebaseMessaging.onMessageOpenedApp.listen(\n      (data) async {\n        NotificationHandlerImpl.instance.onNotificationBackgroundTap(data: data);\n      },\n    );\n    FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) async {\n      if (message != null) {\n        NotificationHandlerImpl.instance.onNotificationBackgroundTap(data: message);\n      }\n    });\n  }*/\n\n  var bottomNavigationBarItem = [const HomeView(), const SavedProductsView()];\n\n  @override\n  void onReady() async {\n    String token = await sharedPreferenceService.getToken() ?? '';\n    if (token.isNotEmpty) {\n      // getInitialNotificationMessage();\n    }\n    super.onReady();\n  }\n\n  void onTapPickImage(MediaOptionEnum mediaOption) async {\n    String? path = await pickImage(mediaOption);\n    if (path != null) {\n      Get.toNamed(Routes.AFFECTED_AREA, arguments: {'file': File(path)});\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/base_view/controllers/base_controller.dart b/lib/ui/dashboard/base_view/controllers/base_controller.dart
+--- a/lib/ui/dashboard/base_view/controllers/base_controller.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/base_view/controllers/base_controller.dart	(date 1722003938222)
+@@ -11,7 +11,10 @@
+ 
+   Future<void> onItemTapped(index) async {
+     currentIndex.value = index;
+-    if (index == 0) getUserDetail(onSuccess: (res) {});
++    if (index == 0) {
++      getUserDetail(onSuccess: (res) {});
++      Get.find<HomeController>().getProductList();
++    }
+     return index;
+   }
+ 
+Index: lib/ui/dashboard/home/bindings/home_binding.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\n\nimport '../controllers/home_controller.dart';\n\nclass HomeBinding extends Bindings {\n  @override\n  void dependencies() {\n    Get.lazyPut<HomeController>(\n      HomeController.new,\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/home/bindings/home_binding.dart b/lib/ui/dashboard/home/bindings/home_binding.dart
+--- a/lib/ui/dashboard/home/bindings/home_binding.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/home/bindings/home_binding.dart	(date 1722003140939)
+@@ -1,4 +1,5 @@
+ import 'package:get/get.dart';
++import 'package:skin_match/usecase/product_usecase.dart';
+ 
+ import '../controllers/home_controller.dart';
+ 
+@@ -6,7 +7,7 @@
+   @override
+   void dependencies() {
+     Get.lazyPut<HomeController>(
+-      HomeController.new,
++      () => HomeController(Get.find<ProductUseCase>()),
+     );
+   }
+ }
+Index: lib/ui/dashboard/saved_products/controllers/saved_products_controller.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/common_bottom_sheet.dart';\nimport 'package:skin_match/models/local/search_filter.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';\nimport 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';\n\nclass SavedProductsController extends GlobalGetXController {\n  List<ProductModel> productList = [];\n  Rxn<SearchFilter> selectedFilterOption = Rxn();\n\n  @override\n  void onInit() {\n    super.onInit();\n    prepareList();\n  }\n\n  void prepareList() {\n    productList.addAll([\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n    ]);\n  }\n\n  ProductModel productModel1 = const ProductModel(\n    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',\n    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description:\n        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',\n    isFavorite: true,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n    ],\n  );\n  ProductModel productModel2 = const ProductModel(\n    name: 'NIVEA Pearl',\n    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description: 'NIVEA Pearl and Beauty 50ml',\n    isFavorite: false,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n    ],\n  );\n\n  void onTapFilterOption(BuildContext context) async {\n    if (!(Get.isRegistered<FiltersController>())) {\n      Get.lazyPut<FiltersController>(\n        FiltersController.new,\n      );\n    }\n    var result = await Get.bottomSheet(\n      settings: RouteSettings(\n        arguments: {'selected_filter_option': selectedFilterOption.value},\n      ),\n      isScrollControlled: true,\n      CommonBottomSheet(\n        height: 570.h,\n        title: LocaleKeys.filters.tr,\n        childWidget: const FiltersView(),\n      ),\n    );\n    if (result != null && selectedFilterOption.value != result) {\n      selectedFilterOption.value = result;\n      Logger.write('@158 Filter Option : ${selectedFilterOption.value}');\n      //Todo request data\n    } else {\n      Logger.write('@161 Filter Option : ${selectedFilterOption.value}');\n      selectedFilterOption.value = SearchFilter();\n      if (selectedFilterOption.value != result) {\n        selectedFilterOption.value = null;\n        //Todo request data\n      }\n    }\n  }\n\n  void onStoreTap(int index) {\n    Get.bottomSheet(\n      CommonBottomSheet(\n        onClose: Get.back,\n        height: 400.h,\n        title: LocaleKeys.productAvailableOn.tr,\n        childWidget: StoreBottomSheetWidget(\n          productModel: productList[index],\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/saved_products/controllers/saved_products_controller.dart b/lib/ui/dashboard/saved_products/controllers/saved_products_controller.dart
+--- a/lib/ui/dashboard/saved_products/controllers/saved_products_controller.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/saved_products/controllers/saved_products_controller.dart	(date 1722000055844)
+@@ -2,126 +2,14 @@
+ import 'package:skin_match/core/common/app_common_exports.dart';
+ import 'package:skin_match/core/widgets/common_bottom_sheet.dart';
+ import 'package:skin_match/models/local/search_filter.dart';
+-import 'package:skin_match/models/local/product_model.dart';
++import 'package:skin_match/models/remote/product_model.dart';
+ import 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';
+ import 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';
+-import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';
+ 
+ class SavedProductsController extends GlobalGetXController {
+   List<ProductModel> productList = [];
+   Rxn<SearchFilter> selectedFilterOption = Rxn();
+ 
+-  @override
+-  void onInit() {
+-    super.onInit();
+-    prepareList();
+-  }
+-
+-  void prepareList() {
+-    productList.addAll([
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-    ]);
+-  }
+-
+-  ProductModel productModel1 = const ProductModel(
+-    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',
+-    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description:
+-        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',
+-    isFavorite: true,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-    ],
+-  );
+-  ProductModel productModel2 = const ProductModel(
+-    name: 'NIVEA Pearl',
+-    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description: 'NIVEA Pearl and Beauty 50ml',
+-    isFavorite: false,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-    ],
+-  );
+ 
+   void onTapFilterOption(BuildContext context) async {
+     if (!(Get.isRegistered<FiltersController>())) {
+@@ -155,7 +43,7 @@
+   }
+ 
+   void onStoreTap(int index) {
+-    Get.bottomSheet(
++    /*Get.bottomSheet(
+       CommonBottomSheet(
+         onClose: Get.back,
+         height: 400.h,
+@@ -164,6 +52,6 @@
+           productModel: productList[index],
+         ),
+       ),
+-    );
++    );*/
+   }
+ }
+Index: lib/ui/dashboard/home/controllers/home_controller.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/common_bottom_sheet.dart';\n\nimport 'package:skin_match/core/widgets/pick_image_option_widget.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';\n\nclass HomeController extends GlobalGetXController {\n  List<ProductModel> productList = [];\n\n  RxInt currentPage = 0.obs;\n\n  @override\n  void onInit() {\n    super.onInit();\n    prepareList();\n  }\n\n  void prepareList() {\n    productList.addAll([\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n    ]);\n  }\n\n  ProductModel productModel1 = const ProductModel(\n    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',\n    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description:\n        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',\n    isFavorite: true,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n    ],\n  );\n  ProductModel productModel2 = const ProductModel(\n    name: 'NIVEA Pearl',\n    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description: 'NIVEA Pearl and Beauty 50ml',\n    isFavorite: false,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n    ],\n  );\n\n  void onTapPickImage(MediaOptionEnum mediaOption) async {\n    String? path = await pickImage(mediaOption);\n    if (path != null) {\n      Get.toNamed(Routes.AFFECTED_AREA, arguments: {'file': File(path)});\n    }\n  }\n\n  void onStoreTap(int index) {\n    Get.bottomSheet(\n      CommonBottomSheet(\n        onClose: Get.back,\n        height: 400.h,\n        title: LocaleKeys.productAvailableOn.tr,\n        childWidget: StoreBottomSheetWidget(\n          productModel: productList[index],\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/home/controllers/home_controller.dart b/lib/ui/dashboard/home/controllers/home_controller.dart
+--- a/lib/ui/dashboard/home/controllers/home_controller.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/home/controllers/home_controller.dart	(date 1722003140934)
+@@ -1,97 +1,25 @@
++import 'dart:collection';
++
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/common/app_common_exports.dart';
+-import 'package:skin_match/core/widgets/common_bottom_sheet.dart';
+ 
+ import 'package:skin_match/core/widgets/pick_image_option_widget.dart';
+-import 'package:skin_match/models/local/product_model.dart';
+-import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';
++import 'package:skin_match/models/remote/product_model.dart';
++import 'package:skin_match/usecase/product_usecase.dart';
+ 
+ class HomeController extends GlobalGetXController {
+-  List<ProductModel> productList = [];
++  ProductUseCase productUseCase;
++
++  HomeController(this.productUseCase);
+ 
+   RxInt currentPage = 0.obs;
++  RxList<ProductModel> productList = <ProductModel>[].obs;
+ 
+   @override
+-  void onInit() {
+-    super.onInit();
+-    prepareList();
++  void onReady() {
++    super.onReady();
++    getProductList();
+   }
+-
+-  void prepareList() {
+-    productList.addAll([
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-      productModel1,
+-      productModel2,
+-    ]);
+-  }
+-
+-  ProductModel productModel1 = const ProductModel(
+-    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',
+-    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description:
+-        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',
+-    isFavorite: true,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-      ),
+-    ],
+-  );
+-  ProductModel productModel2 = const ProductModel(
+-    name: 'NIVEA Pearl',
+-    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',
+-    amount: 220,
+-    ratings: 4.5,
+-    description: 'NIVEA Pearl and Beauty 50ml',
+-    isFavorite: false,
+-    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-    storesData: [
+-      StoreModel(
+-        amount: 440,
+-        ratings: 4.5,
+-        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+-      ),
+-    ],
+-  );
+ 
+   void onTapPickImage(MediaOptionEnum mediaOption) async {
+     String? path = await pickImage(mediaOption);
+@@ -100,16 +28,27 @@
+     }
+   }
+ 
+-  void onStoreTap(int index) {
+-    Get.bottomSheet(
+-      CommonBottomSheet(
+-        onClose: Get.back,
+-        height: 400.h,
+-        title: LocaleKeys.productAvailableOn.tr,
+-        childWidget: StoreBottomSheetWidget(
+-          productModel: productList[index],
+-        ),
+-      ),
+-    );
++  Future<void> getProductList() async {
++    Map<String, dynamic> params = HashMap();
++    params['page'] = 1;
++    params['page_size'] = 6;
++
++    Logger.write('Request : $params');
++
++    try {
++      progressService.showProgressDialog(true);
++      var response = await productUseCase.getPopularProductList(params);
++      response.fold((l) {
++        l.getException();
++      }, (r) async {
++        if (r.data != null) {
++          productList.value = List.from(r.data ?? []);
++        }
++      });
++    } catch (e, sta) {
++      Logger.write('@76::::${sta.toString()}');
++    } finally {
++      progressService.showProgressDialog(false);
++    }
+   }
+ }
+Index: lib/ui/dashboard/base_view/bindings/base_binding.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/routes/route_exports.dart';\nimport 'package:skin_match/ui/dashboard/saved_products/controllers/saved_products_controller.dart';\n\nclass BaseBinding extends Bindings {\n  @override\n  void dependencies() {\n    Get.lazyPut<BaseController>(BaseController.new);\n    Get.lazyPut<HomeController>(HomeController.new);\n    Get.lazyPut<SavedProductsController>(SavedProductsController.new);\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/base_view/bindings/base_binding.dart b/lib/ui/dashboard/base_view/bindings/base_binding.dart
+--- a/lib/ui/dashboard/base_view/bindings/base_binding.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/base_view/bindings/base_binding.dart	(date 1722003140968)
+@@ -1,12 +1,16 @@
+ import 'package:get/get.dart';
+ import 'package:skin_match/core/routes/route_exports.dart';
+ import 'package:skin_match/ui/dashboard/saved_products/controllers/saved_products_controller.dart';
++import 'package:skin_match/usecase/product_usecase.dart';
+ 
+ class BaseBinding extends Bindings {
+   @override
+   void dependencies() {
++    Get.lazyPut(() => ProductUseCase(Get.find()));
+     Get.lazyPut<BaseController>(BaseController.new);
+-    Get.lazyPut<HomeController>(HomeController.new);
++    Get.lazyPut<HomeController>(
++      () => HomeController(Get.find<ProductUseCase>()),
++    );
+     Get.lazyPut<SavedProductsController>(SavedProductsController.new);
+   }
+ }
+Index: lib/ui/dashboard/recommended_products/controllers/recommended_products_controller.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:get/get.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/core/widgets/common_bottom_sheet.dart';\nimport 'package:skin_match/models/local/search_filter.dart';\nimport 'package:skin_match/models/local/product_model.dart';\nimport 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';\nimport 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';\nimport 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';\n\nclass RecommendedProductsController extends GlobalGetXController {\n  List<ProductModel> productList = [];\n  String? categoryModel;\n  Rxn<SearchFilter> selectedFilterOption = Rxn();\n\n  @override\n  void onInit() {\n    super.onInit();\n    if (Get.arguments != null) {\n      categoryModel = Get.arguments['category_model'];\n    }\n    prepareList();\n  }\n\n  void prepareList() {\n    productList.addAll([\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n      productModel1,\n      productModel2,\n    ]);\n  }\n\n  ProductModel productModel1 = const ProductModel(\n    name: 'Lakme 9 To 5 Complexion Care Face CC Cream',\n    imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description:\n        'Lakme 9 To 5 Complexion Care Face CC Cream, Beige, SPF 30, Conceals Dark Spots & Blemishes, 30 g (Packaging may vary)',\n    isFavorite: true,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/41Gb3oav0tL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n      ),\n    ],\n  );\n  ProductModel productModel2 = const ProductModel(\n    name: 'NIVEA Pearl',\n    imageUrl: 'https://m.media-amazon.com/images/I/31lyZiU5UAL._SX300_SY300_QL70_FMwebp_.jpg',\n    amount: 220,\n    ratings: 4.5,\n    description: 'NIVEA Pearl and Beauty 50ml',\n    isFavorite: false,\n    storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n    storesData: [\n      StoreModel(\n        amount: 440,\n        ratings: 4.5,\n        storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',\n      ),\n    ],\n  );\n\n  void onTapFilterOption(BuildContext context) async {\n    if (!(Get.isRegistered<FiltersController>())) {\n      Get.lazyPut<FiltersController>(\n        FiltersController.new,\n      );\n    }\n    var result = await Get.bottomSheet(\n      settings: RouteSettings(\n        arguments: {'selected_filter_option': selectedFilterOption.value},\n      ),\n      isScrollControlled: true,\n      CommonBottomSheet(\n        height: 580.h,\n        title: LocaleKeys.filters.tr,\n        childWidget: const FiltersView(),\n      ),\n    );\n    if (result != null && selectedFilterOption.value != result) {\n      selectedFilterOption.value = result;\n      //Todo request data\n    } else {\n      selectedFilterOption.value = SearchFilter();\n      if (selectedFilterOption.value != result) {\n        selectedFilterOption.value = null;\n        //Todo request data\n      }\n    }\n  }\n\n  void onStoreTap(int index) {\n    Get.bottomSheet(\n      CommonBottomSheet(\n        onClose: Get.back,\n        height: 400.h,\n        title: LocaleKeys.productAvailableOn.tr,\n        childWidget: StoreBottomSheetWidget(\n          productModel: productList[index],\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/ui/dashboard/recommended_products/controllers/recommended_products_controller.dart b/lib/ui/dashboard/recommended_products/controllers/recommended_products_controller.dart
+--- a/lib/ui/dashboard/recommended_products/controllers/recommended_products_controller.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/ui/dashboard/recommended_products/controllers/recommended_products_controller.dart	(date 1722000055837)
+@@ -2,10 +2,9 @@
+ import 'package:skin_match/core/common/app_common_exports.dart';
+ import 'package:skin_match/core/widgets/common_bottom_sheet.dart';
+ import 'package:skin_match/models/local/search_filter.dart';
+-import 'package:skin_match/models/local/product_model.dart';
++import 'package:skin_match/models/remote/product_model.dart';
+ import 'package:skin_match/ui/dashboard/filters/controllers/filters_controller.dart';
+ import 'package:skin_match/ui/dashboard/filters/views/filters_view.dart';
+-import 'package:skin_match/ui/dashboard/recommended_products/views/widget/store_bottom_sheet_widget.dart';
+ 
+ class RecommendedProductsController extends GlobalGetXController {
+   List<ProductModel> productList = [];
+@@ -22,7 +21,7 @@
+   }
+ 
+   void prepareList() {
+-    productList.addAll([
++    /*productList.addAll([
+       productModel1,
+       productModel2,
+       productModel1,
+@@ -35,10 +34,10 @@
+       productModel2,
+       productModel1,
+       productModel2,
+-    ]);
++    ]);*/
+   }
+ 
+-  ProductModel productModel1 = const ProductModel(
++  /*ProductModel productModel1 = const ProductModel(
+     name: 'Lakme 9 To 5 Complexion Care Face CC Cream',
+     imageUrl: 'https://m.media-amazon.com/images/I/41Adde7gNmL._SX300_SY300_QL70_FMwebp_.jpg',
+     amount: 220,
+@@ -80,7 +79,7 @@
+         storeImage: 'https://m.media-amazon.com/images/I/61sXRqmLsXL._SX522_.jpg',
+       ),
+     ],
+-  );
++  );*/
+ 
+   void onTapFilterOption(BuildContext context) async {
+     if (!(Get.isRegistered<FiltersController>())) {
+@@ -112,7 +111,7 @@
+   }
+ 
+   void onStoreTap(int index) {
+-    Get.bottomSheet(
++    /*Get.bottomSheet(
+       CommonBottomSheet(
+         onClose: Get.back,
+         height: 400.h,
+@@ -121,6 +120,6 @@
+           productModel: productList[index],
+         ),
+       ),
+-    );
++    );*/
+   }
+ }
+Index: lib/usecase/product_usecase.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:fpdart/fpdart.dart';\nimport 'package:skin_match/core/common/app_common_exports.dart';\nimport 'package:skin_match/models/pagination_taha.dart';\nimport 'package:skin_match/models/remote/affected_area_model.dart';\nimport 'package:skin_match/models/remote/other_product_model.dart';\nimport 'package:skin_match/models/remote/product_model.dart';\nimport 'package:skin_match/models/remote/skin_condition_list_model.dart';\n\nclass ProductUseCase extends UseCase {\n  final ApiProvider apiProvider;\n\n  ProductUseCase(this.apiProvider);\n\n  Future<Either<Exception, PaginationTaha<ProductModel>>> searchProductList(\n    Map<String, dynamic> params,\n  ) async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.searchProductList(params);\n      if (responseHandler != null && responseHandler.isSuccess) {\n        return Either.right(\n          PaginationTaha.fromJson(\n            responseHandler.result,\n            ProductModel.fromJson,\n          ),\n        );\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n\n  Future<Either<Exception, List<SkinConditionListModel>>> skinConditionList() async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.skinConditionList();\n      if (responseHandler != null && responseHandler.isSuccess) {\n        List<SkinConditionListModel> list = tryParseList(\n          responseHandler.result,\n          SkinConditionListModel.fromJson,\n        );\n        return Either.right(list);\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n\n  Future<Either<Exception, List<OtherProductModel>>> getProductByPID(\n    Map<String, dynamic> pIds,\n  ) async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.getProductByPID(pIds);\n      if (responseHandler != null && responseHandler.isSuccess) {\n        List<OtherProductModel> list = tryParseList(\n          responseHandler.result,\n          OtherProductModel.fromJson,\n        );\n        return Either.right(list);\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n\n  Future<Either<Exception, List<AffectedAreaModel>>> getAffectedAreaList() async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.getAffectedAreaList();\n      if (responseHandler != null && responseHandler.isSuccess) {\n        List<AffectedAreaModel> list = tryParseList(\n          responseHandler.result,\n          AffectedAreaModel.fromJson,\n        );\n        return Either.right(list);\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n\n  Future<Either<Exception, List<AffectedAreaModel>>> getSubAffectedAreaList(int id) async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.getSubAffectedAreaList(id);\n      if (responseHandler != null && responseHandler.isSuccess) {\n        List<AffectedAreaModel> list = tryParseList(\n          responseHandler.result,\n          AffectedAreaModel.fromJson,\n        );\n        return Either.right(list);\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n\n  Future<Either<Exception, bool>> verifyAffectedAreas(Map<String, dynamic> request) async {\n    try {\n      ResponseHandler? responseHandler = await apiProvider.verifyAffectedAreas(request);\n      if (responseHandler != null && responseHandler.isSuccess) {\n        return Either.right(responseHandler.result['status'] ?? false);\n      } else {\n        return Either.left(CustomException(responseHandler?.message ?? ''));\n      }\n    } on Exception catch (e) {\n      return Either.left(e);\n    }\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/lib/usecase/product_usecase.dart b/lib/usecase/product_usecase.dart
+--- a/lib/usecase/product_usecase.dart	(revision a7780cb80903b6ba8bb5a7cda14aca8b062cde6c)
++++ b/lib/usecase/product_usecase.dart	(date 1721999477340)
+@@ -31,6 +31,27 @@
+     }
+   }
+ 
++  Future<Either<Exception, PaginationTaha<ProductModel>>> getPopularProductList(
++      Map<String, dynamic> params,
++      ) async {
++    try {
++      ResponseHandler? responseHandler = await apiProvider.getPopularProductList(params);
++      if (responseHandler != null && responseHandler.isSuccess) {
++        return Either.right(
++          PaginationTaha.fromJson(
++            responseHandler.result,
++            ProductModel.fromJson,
++          ),
++        );
++      } else {
++        return Either.left(CustomException(responseHandler?.message ?? ''));
++      }
++    } on Exception catch (e) {
++      return Either.left(e);
++    }
++  }
++
++
+   Future<Either<Exception, List<SkinConditionListModel>>> skinConditionList() async {
+     try {
+       ResponseHandler? responseHandler = await apiProvider.skinConditionList();

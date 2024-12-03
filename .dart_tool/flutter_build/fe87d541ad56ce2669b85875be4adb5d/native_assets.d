@@ -1,0 +1,1 @@
+ D:\\skin-match-flutter\\.dart_tool\\flutter_build\\fe87d541ad56ce2669b85875be4adb5d\\native_assets.yaml: 
