@@ -70,7 +70,7 @@ class CommonTextRegular extends StatelessWidget {
         height: lineHeight ?? 1.2,
         decoration: textDecoration,
         fontStyle: fontStyle,
-        fontFamily: fontFamilyType?.name ?? FontFamilyType.productSansBold.name,
+        fontFamily: fontFamilyType?.name ?? FontFamilyType.poppins.name,
         decorationColor: decorationColor,
         fontWeight: fontWeight,
         overflow: textOverflow,

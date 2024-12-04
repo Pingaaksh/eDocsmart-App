@@ -38,6 +38,8 @@ class LightThemeColors {
 
   static Color get disabled => const Color(0xFFBDBDBD);
 
+  static Color get textDescription => const Color(0xFF828282);
+
 }
 
 class DarkThemeColors {

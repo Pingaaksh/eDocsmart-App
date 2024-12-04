@@ -221,7 +221,7 @@ class CommonTextField extends StatefulWidget {
     this.onSubmitted,
     this.borderRadius,
     this.autovalidateMode,
-    required this.onValidate,
+    this.onValidate,
     this.isBorderEnabled,
     this.suffixIcon,
     this.hintText,
@@ -248,7 +248,7 @@ class CommonTextField extends StatefulWidget {
     this.isRequired,
     this.autovalidateMode,
     this.borderRadius,
-    required this.onValidate,
+    this.onValidate,
     this.onSubmitted,
     this.suffixIcon,
     this.hintText,
@@ -353,13 +353,13 @@ class _CommonTextFieldState extends State<CommonTextField> {
               fontWeight: FontWeight.w400,
             ),
             hintStyle: context.theme.textTheme.titleSmall?.copyWith(
-              fontSize: 16.sp,
-              color: context.theme.colorScheme.primaryContainer.withOpacity(0.6),
-              fontWeight: FontWeight.w400,
+              fontSize: 13.sp,
+              color: context.theme.disabledColor,
+              fontWeight: FontWeight.w500,
               overflow: widget.hintTextOverFlow,
             ),
             errorStyle: context.theme.textTheme.titleMedium?.copyWith(
-              fontSize: 16.sp,
+              fontSize: 12.sp,
               color: context.theme.colorScheme.error,
               fontWeight: FontWeight.w400,
             ),
@@ -370,7 +370,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
             ),
             enabledBorder: getBorder(
               context,
-              context.theme.colorScheme.secondary,
+              context.theme.disabledColor,
               borderRadius: widget.borderRadius,
             ),
             disabledBorder: getBorder(
@@ -401,7 +401,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
                       icon: Icon(
                         passwordHide ? Icons.visibility : Icons.visibility_off_rounded,
                       ),
-                      color: const Color(0xFFBCA776),
+                      color: context.theme.disabledColor,
                       onPressed: _toggleVisibility,
                     ),
                   )
@@ -414,6 +414,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
           onFieldSubmitted: widget.onSubmitted,
           onChanged: widget.onChanged,
           validator: widget.onValidate,
+
         ),
       ],
     );

@@ -23,13 +23,16 @@ class CommonBackButton extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.only(left: 30.w,right: 20.h,top: 20.h),
               child: GestureDetector(
                 onTap: onBack.call,
                 behavior: HitTestBehavior.opaque,
-                child: SvgPicture.asset(
-                  SVGPath.backIcon,
-                  height: 44.h,
+                child: ClipOval(
+                  child: SvgPicture.asset(
+                    SVGPath.backIcon,
+                    height: 40.h,
+                    width: 40.w,
+                  ),
                 ),
               ),
             ),

@@ -26,6 +26,18 @@ class AppPages {
       binding: IntroBinding(),
       transition: Transition.fadeIn,
     ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.SIGNUP,
+      page: () => const SignupView(),
+      binding: SignupBinding(),
+      transition: Transition.fadeIn,
+    ),
 
     GetPage(
       name: _Paths.VERIFY_OTP,
@@ -33,12 +45,7 @@ class AppPages {
       binding: OTPVerifyBinding(),
       transition: Transition.fadeIn,
     ),
-    GetPage(
-      name: _Paths.LOGIN,
-      page: () => const LoginView(),
-      binding: LoginBinding(),
-      transition: Transition.fadeIn,
-    ),
+
 
     GetPage(
       name: _Paths.FORGOT_PASSWORD,

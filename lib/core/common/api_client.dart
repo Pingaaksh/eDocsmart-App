@@ -1,7 +1,7 @@
 class ApiClient {
   static const bool _isDevelopmentMode = true;
   static const String _url = _isDevelopmentMode
-      ? 'https://sknmatch.concettoprojects.com/api/'
+      ? 'http://192.168.1.5:4445/API/'
       : 'https://concetto.bargainfox.com/api/';
 
   static const Map<String, String> applicationJsonHeader = {
@@ -15,7 +15,7 @@ class ApiClient {
   static int receiveTimeoutSec = 200;
   final int successResponse = 200;
 
-  static const String login = 'login';
+  static const String login = 'User_Auth/login/';
   static const String forgotPassword = 'forgot-password';
   static const String verifyOTP = 'verify-code';
   static const String resetPassword = 'reset-password';

@@ -15,19 +15,14 @@ class LocaleKeys {
   static const ok = 'ok';
   static const cancel = 'cancel';
   static const done = 'done';
-  static const forgotPassword = 'forgotPassword';
   static const forgotDescription = 'forgotDescription';
-  static const emailAddress = 'emailAddress';
-  static const password = 'password';
   static const errorLabel = 'errorLabel';
   static const errValidPhoneNumber = 'errValidPhoneNumber';
-  static const signIn = 'signIn';
   static const phoneNumber = 'phoneNumber';
   static const sendOTP = 'sendOTP';
   static const email = 'email';
   static const resetPassword = 'resetPassword';
   static const newPassword = 'newPassword';
-  static const confirmPassword = 'confirmPassword';
   static const passwordChanged = 'passwordChanged';
   static const passwordChangedDesc = 'passwordChangedDesc';
   static const searchHere = 'searchHere';
@@ -49,7 +44,6 @@ class LocaleKeys {
   static const errEnterValidOTP = 'errEnterValidOTP';
   static const otpVerifiedDesc = 'otpVerifiedDesc';
   static const verify = 'verify';
-  static const dontHaveAnAccount = 'dontHaveAnAccount';
   static const privacyPolicy = 'privacyPolicy';
   static const phoneOrEmail = 'phoneOrEmail';
   static const phoneOrEmailError = 'phoneOrEmailError';
@@ -70,18 +64,14 @@ class LocaleKeys {
   static const sessionExpiredDesc = 'sessionExpiredDesc';
   static const loginAgain = 'loginAgain';
   static const noSearchResultFound = 'noSearchResultFound';
-  static const signUp = 'signUp';
   static const introTitle = 'introTitle';
   static const introDesc = 'introDesc';
-  static const welcomeBack = 'welcomeBack';
-  static const userName = 'userName';
   static const age = 'age';
   static const otpVerification = 'otpVerification';
   static const otpVerificationDesc = 'otpVerificationDesc';
   static const home = 'home';
   static const poweredBy = 'poweredBy';
   static const idealSkin = 'idealSkin';
-  static const getStartedNow = 'getStartedNow';
   static const loginDesc = 'loginDesc';
   static const createAccount = 'createAccount';
   static const signUpDesc = 'signUpDesc';
@@ -204,6 +194,25 @@ class LocaleKeys {
   static const onboardingThirdDis = 'Organise, search, and manage your invoices all in one place. It’s your personal finance assistant—anytime, anywhere.';
   static const register = 'REGISTER';
   static const login = 'LOGIN';
+  static const welcomeBack = 'WELCOME BACK!';
+  static const enterYourCredentials = 'Enter your credentials to access your account and continue your journey.';
+  static const emailUsername = 'EMAIL / USERNAME';
+  static const password = 'PASSWORD';
+  static const forgotPassword = 'Forgot Password?';
+  static const dontHaveAnAccount = 'Don’t have an account?';
+  static const signUp = 'Sign Up';
+  static const firstName = 'FIRST NAME';
+  static const lastName = 'LAST NAME';
+  static const username = 'USER NAME';
+  static const emailAddress = 'EMAIL ADDRESS';
+  static const mobileNumber = 'MOBILE NUMBER';
+  static const confirmPassword = 'CONFIRM PASSWORD';
+  static const getStartedNow = 'GET STARTED NOW!';
+  static const signUpNowToUnlock = 'Sign up now to unlock features and enjoy a personalized experience.';
+  static const alreadyHaveAnAccount = 'Already have an account?';
+  static const signIn = 'Sign In';
+  static const enterYourEmailToReceiveALink = 'Enter your email to receive a link to reset your password.';
+
 
 
 }

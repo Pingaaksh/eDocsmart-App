@@ -23,7 +23,6 @@ class SVGPath {
   static const String arrowDown = 'assets/svg/arrow_down.svg';
   static const String forgotPasswordIcon = 'assets/svg/forgot_password.svg';
   static const String rectShapeIcon = 'assets/svg/rect_shape.svg';
-  static const String backIcon = 'assets/svg/back.svg';
   static const String otpVerifyIcon = 'assets/svg/opt_verify.svg';
 
 
@@ -31,6 +30,8 @@ class SVGPath {
   /// App ///
 
   static const String logo = 'assets/svg/logo.svg';
+  static const String backIcon = 'assets/svg/back_icone.svg';
+
 
 
 

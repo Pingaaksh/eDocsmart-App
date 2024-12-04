@@ -44,7 +44,7 @@ class UserModel {
         isBlocked: json['is_blocked'],
         languageId: json['language_id'],
         createdAt: json['created_at'],
-        token: json['token'],
+        token: json['access'],
         previousSkinConditions: json['previous_skin_conditions'] == null
             ? []
             : List<PreviousSkinCondition>.from(

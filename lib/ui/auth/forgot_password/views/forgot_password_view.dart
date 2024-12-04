@@ -13,48 +13,49 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
       appBar: CommonBackButton(onBack: Get.back),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 24.w,
+          padding: EdgeInsets.only(
+            left: 30.w,right: 30.w,
+            top: Get.width/3
           ),
           child: Form(
             key: controller.formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SvgPicture.asset(SVGPath.forgotPasswordIcon),
-                  SizedBox(height: 30.h),
-                  CommonTextRegular(
-                    text: LocaleKeys.forgotPassword.tr,
-                    size: 26.sp,
-                    fontFamilyType: FontFamilyType.elMessiri,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  SizedBox(height: 10.h),
-                  CommonTextRegular(
-                    text: LocaleKeys.forgotDescription.tr,
-                    size: 16.sp,
-                    lineHeight: 1.5,
-                    color: context.theme.colorScheme.primaryContainer.withOpacity(0.70),
-                    textAlign: TextAlign.center,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  SizedBox(height: 24.h),
-                  CommonTextField(
-                    textEditController: controller.emailController,
-                    focusNode: controller.emailFN,
-                    textInputType: TextInputType.emailAddress,
-                    labelText: LocaleKeys.email.tr,
-                    onValidate: (value) {
-                      return controller.validateEmail(value ?? '');
-                    },
-                  ),
-                  SizedBox(height: 40.h),
-                  CommonButton(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30.h),
+                CommonTextRegular(
+                  text: LocaleKeys.forgotPassword,
+                  size: 26.sp,
+                  fontWeight: FontWeight.w700,
+                  color: LightThemeColors.primaryColor,
+                ),
+                SizedBox(height: 10.h),
+                CommonTextRegular(
+                  text: LocaleKeys.enterYourEmailToReceiveALink,
+                  size: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  color: LightThemeColors.textDescription,
+                ),
+                SizedBox(height: 50.h),
+                CommonTextField(
+                  isFilled: false,
+                  textEditController: controller.emailController,
+                  focusNode: controller.emailFN,
+                  textInputType: TextInputType.emailAddress,
+                  labelText: LocaleKeys.email.tr,
+                  onValidate: (value) {
+                    return controller.validateEmail(value ?? '');
+                  },
+                ),
+                SizedBox(height: 50.h),
+                Align(
+                  child: CommonButton(
+                    width: 152.w,
                     onTap: () => controller.sendOTP(),
                     text: LocaleKeys.sendOTP.tr,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-const int mobileNumberLength = 11;
+const int mobileNumberLength = 10;
 const int otpMaxLength = 4;
 const int postCodeMaxLength = 6;
 const int passwordLength = 6;
@@ -20,7 +20,7 @@ const introSliderPageAnimateDuration = Duration(milliseconds: 500);
 const checkoutPaymentPublicKey = 'pk_sbox_3jvelfyxabwnstlfo457dtym5aw';
 const String perPage = '10';
 
-const mobileValidationRegEx = r'(^[0-9]{11}$)';
+const mobileValidationRegEx = r'^[6-9]\d{9}$';
 const nameValidationRegEx = r'(^[a-zA-Z ]*$)';
 const postCodeValidationRegEx = r'(^[0-9]*$)';
 const emailValidationRegEx =

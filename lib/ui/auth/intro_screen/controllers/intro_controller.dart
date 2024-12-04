@@ -25,4 +25,12 @@ class IntroController extends GlobalGetXController with Validator {
       );
     });
   }
+
+
+  @override
+  void onClose() {
+    super.onClose();
+    timer?.cancel();
+    pageController.dispose();
+  }
 }

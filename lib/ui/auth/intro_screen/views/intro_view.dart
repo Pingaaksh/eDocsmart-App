@@ -15,7 +15,6 @@ class IntroView extends GetView<IntroController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(
-              fit: FlexFit.loose,
               child: SizedBox(
                 height: Get.height * 0.8,
                 child: PageView(
@@ -49,26 +48,28 @@ class IntroView extends GetView<IntroController> {
             buildSmoothPageIndicator(
               controller,
             ),
-            SizedBox(height:58.h),
-
+            SizedBox(height: 58.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CommonButton.secondary(
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(Routes.SIGNUP);
+                  },
                   width: 152.w,
                   text: LocaleKeys.register,
                   outLineColor: LightThemeColors.secondaryColor,
                 ),
                 CommonButton(
-                  onTap: () {},
+                  onTap: () {
+                    Get.offAllNamed(Routes.LOGIN);
+                  },
                   width: 152.w,
                   text: LocaleKeys.login,
                 ),
-
               ],
             ),
-           SizedBox(height:48.h),
+            SizedBox(height: 48.h),
           ],
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:skin_match/core/common/app_common_exports.dart';
-import 'package:skin_match/core/di/firebase_messaging_manager.dart';
 import 'package:skin_match/core/global/global_controller.dart';
 import 'package:skin_match/usecase/auth_usecase.dart';
 
@@ -15,14 +14,10 @@ class LoginController extends GlobalGetXController with Validator {
   FocusNode passwordFN = FocusNode();
 
   Future<void> signIn() async {
-    if (formKey.currentState!.validate()) {
-      String deviceToken = await FirebaseMessagingManager.instance.getToken() ?? '';
+    // if (formKey.currentState!.validate()) {
       Map<String, dynamic> request = {
-        'email': emailController.text.trim(),
-        'password': passwordController.text.trim(),
-        'device_type': Platform.isAndroid ? android : ios,
-        'device_id': deviceId,
-        'device_token': deviceToken,
+        'email'    : 'sunilkunkekar@gmail.com',
+        'password' :'admin1010',
       };
       try {
         progressService.showProgressDialog(true);
@@ -30,12 +25,13 @@ class LoginController extends GlobalGetXController with Validator {
         response.fold((left) => left.getException(), (userModel) {
           sharedPreferenceService.setUser(userModel);
         });
+        Logger.write('-=-=-=-=-=-=-==- 3');
       } catch (e) {
         Logger.write('@Login : Error : ${e.toString()}');
       } finally {
         progressService.showProgressDialog(false);
       }
-    }
+    // }
   }
 
   @override
