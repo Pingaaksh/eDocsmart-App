@@ -363,6 +363,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
               color: context.theme.colorScheme.error,
               fontWeight: FontWeight.w400,
             ),
+            errorMaxLines: 2,
             border: getBorder(
               context,
               context.theme.colorScheme.secondary,

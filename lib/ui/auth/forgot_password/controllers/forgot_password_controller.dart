@@ -13,7 +13,7 @@ class ForgotPasswordController extends GlobalGetXController with Validator {
   FocusNode emailFN = FocusNode();
 
   Future<void> sendOTP() async {
-    Get.offNamed(Routes.VERIFY_OTP, arguments: emailController.text.trim());
+    Get.toNamed(Routes.VERIFY_OTP, arguments: emailController.text.trim());
     if (formKey.currentState!.validate()) {
       try {
         progressService.showProgressDialog(true);

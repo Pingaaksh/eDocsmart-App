@@ -53,7 +53,7 @@ class CommonTextLarge extends StatelessWidget {
     return Text(
       text,
       style: Get.theme.textTheme.labelLarge?.copyWith(
-          color: color ?? Get.theme.colorScheme.primaryContainer,
+          color: color ?? Get.theme.colorScheme.primary,
           fontSize: size ?? 14.sp,
           height: lineHeight ?? 1,
           decoration: textDecoration,

@@ -15,7 +15,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
         child: Padding(
           padding: EdgeInsets.only(
             left: 30.w,right: 30.w,
-            top: Get.width/3
+            top: Get.height/8,
           ),
           child: Form(
             key: controller.formKey,

@@ -43,7 +43,6 @@ class LocaleKeys {
   static const passwordNotMatched = 'passwordNotMatched';
   static const errEnterValidOTP = 'errEnterValidOTP';
   static const otpVerifiedDesc = 'otpVerifiedDesc';
-  static const verify = 'verify';
   static const privacyPolicy = 'privacyPolicy';
   static const phoneOrEmail = 'phoneOrEmail';
   static const phoneOrEmailError = 'phoneOrEmailError';
@@ -212,6 +211,14 @@ class LocaleKeys {
   static const alreadyHaveAnAccount = 'Already have an account?';
   static const signIn = 'Sign In';
   static const enterYourEmailToReceiveALink = 'Enter your email to receive a link to reset your password.';
+  static const verifyYourIdentity = 'VERIFY YOUR IDENTITY';
+  static const enterTheCodeSentToYourEmailPhone = 'Enter the code sent to your email/phone to complete the process.';
+  static const resendOTPIN = 'Resend otp in';
+  static const verifyOTP = 'VERIFY OTP';
+  static const successful = 'SUCCESSFUL!';
+  static const mustStartUppercase = 'must start with an uppercase letter.!';
+  static const mustContainSpecial = 'must contain at least one special character.';
+
 
 
 
