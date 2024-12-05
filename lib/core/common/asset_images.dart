@@ -15,7 +15,6 @@ class SVGPath {
   static const String googleIcon = 'assets/svg/google.svg';
   static const String userIcon = 'assets/svg/user.svg';
   static const String maleIcon = 'assets/svg/male.svg';
-  static const String successIcon = 'assets/svg/success.svg';
 
   static const String splashLogo = 'assets/svg/splash_logo.svg';
   static const String arrowTopRight = 'assets/svg/arrow_top_right.svg';
@@ -25,16 +24,11 @@ class SVGPath {
   static const String rectShapeIcon = 'assets/svg/rect_shape.svg';
   static const String otpVerifyIcon = 'assets/svg/opt_verify.svg';
 
-
-
   /// App ///
 
   static const String logo = 'assets/svg/logo.svg';
   static const String backIcon = 'assets/svg/back_icone.svg';
-
-
-
-
+  static const String successIcon = 'assets/svg/success.svg';
 
 }
 

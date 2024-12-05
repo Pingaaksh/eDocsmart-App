@@ -1,6 +1,8 @@
 import 'package:skin_match/core/common/app_common_exports.dart';
 import 'package:skin_match/core/global/global_controller.dart';
+import 'package:skin_match/ui/dashboard/view/dashboard_view.dart';
 import 'package:skin_match/usecase/auth_usecase.dart';
+import 'package:get/get.dart';
 
 class LoginController extends GlobalGetXController with Validator {
   LoginController(this.authUseCase);
@@ -14,24 +16,24 @@ class LoginController extends GlobalGetXController with Validator {
   FocusNode passwordFN = FocusNode();
 
   Future<void> signIn() async {
-    // if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       Map<String, dynamic> request = {
-        'email'    : 'sunilkunkekar@gmail.com',
-        'password' :'admin1010',
+          'email'    : emailController.text,
+          'password' :passwordController.text
       };
       try {
         progressService.showProgressDialog(true);
         var response = await authUseCase.login(request);
         response.fold((left) => left.getException(), (userModel) {
           sharedPreferenceService.setUser(userModel);
+          Get.to(()=> const DashboardView());
         });
-        Logger.write('-=-=-=-=-=-=-==- 3');
       } catch (e) {
         Logger.write('@Login : Error : ${e.toString()}');
       } finally {
         progressService.showProgressDialog(false);
       }
-    // }
+    }
   }
 
   @override

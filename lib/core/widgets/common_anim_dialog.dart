@@ -41,8 +41,8 @@ class CustomAnimDialog extends StatelessWidget {
             Radius.circular(15.r),
           ),
         ),
-        title: SizedBox(
-          height: 100.h,
+        title: Padding(
+          padding:  EdgeInsets.only(top:46.h),
           child: Align(
             alignment: AlignmentDirectional.center,
             child: SvgPicture.asset(
@@ -55,13 +55,15 @@ class CustomAnimDialog extends StatelessWidget {
         ),
         content: Column(
           children: [
-            SizedBox(height: 10.h),
-            CommonTextLarge(text: title, size: 20.sp),
+            SizedBox(height: 33.h),
+            CommonTextRegular(text: title, size: 26.sp,fontWeight: FontWeight.w700,color:context.theme.colorScheme.primary ,),
             SizedBox(height: 10.h),
             CommonTextRegular(
               text: message,
-              size: 18.sp,
+              size: 14.sp,
+              fontWeight: FontWeight.w500,
               textAlign: TextAlign.center,
+              color:  context.theme.colorScheme.onTertiaryContainer,
             ).paddingSymmetric(horizontal: 20.w),
             SizedBox(height: 10.h),
           ],
@@ -73,6 +75,7 @@ class CustomAnimDialog extends StatelessWidget {
                 Align(
                   alignment: AlignmentDirectional.center,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (negativeText != null) ...[
                         Expanded(
@@ -86,14 +89,13 @@ class CustomAnimDialog extends StatelessWidget {
                         ),
                         SizedBox(width: 30.w),
                       ],
-                      Expanded(
-                        child: CommonButton(
-                          text: positiveText,
-                          onTap: () {
-                            _closeDialog(context);
-                            onTap?.call();
-                          },
-                        ),
+                      CommonButton(
+                        width: 152.w,
+                        text: positiveText,
+                        onTap: () {
+                          _closeDialog(context);
+                          onTap?.call();
+                        },
                       ),
                     ],
                   ),

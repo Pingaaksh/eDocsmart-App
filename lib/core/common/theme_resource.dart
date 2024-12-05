@@ -198,7 +198,7 @@ class ThemeResource {
       onSurface: LightThemeColors.secondaryColor,
       primaryContainer: LightThemeColors.textPrimary,
       secondaryContainer: LightThemeColors.textSecondary,
-      onTertiaryContainer: LightThemeColors.textDisabled,
+      onTertiaryContainer: LightThemeColors.textDescription,
       outline: LightThemeColors.dividerColor,
       surfaceTint: LightThemeColors.themeLightCode,
       surfaceVariant: LightThemeColors.cardBoxColor,

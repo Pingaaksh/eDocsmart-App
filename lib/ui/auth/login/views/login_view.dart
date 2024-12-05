@@ -98,6 +98,7 @@ class LoginView extends GetView<LoginController> {
                     SizedBox(height: 48.h),
                     CommonButton(
                       onTap: () {
+                        Get.focusScope!.unfocus();
                         controller.signIn();
                       },
                       width: 152.w,

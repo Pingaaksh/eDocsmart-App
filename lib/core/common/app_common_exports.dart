@@ -37,3 +37,6 @@ export 'package:skin_match/core/widgets/common_text_medium.dart';
 export 'package:skin_match/core/widgets/common_title_regular.dart';
 export 'package:skin_match/core/widgets/image_place_holder.dart';
 export 'package:skin_match/core/widgets/empty_view.dart';
+export 'package:skin_match/core/widgets/common_anim_dialog.dart';
+
+

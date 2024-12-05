@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 const int mobileNumberLength = 10;
-const int otpMaxLength = 4;
+const int otpMaxLength = 5;
 const int postCodeMaxLength = 6;
 const int passwordLength = 6;
 const animationDuration = Duration(milliseconds: 200);

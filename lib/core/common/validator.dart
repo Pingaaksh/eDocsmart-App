@@ -103,12 +103,28 @@ mixin Validator {
     return null;
   }
 
-  String? validatePassword(String? value) => (value?.trim().isEmpty ?? true)
-      ? '${LocaleKeys.password.tr} ${LocaleKeys.mustNotEmpty.tr}'
-      : (value!.trim().length < passwordLength)
-          ? '${LocaleKeys.password.tr} ${LocaleKeys.mustBe.tr} $passwordLength ${LocaleKeys.digits.tr}'
-          : null;
+  String? validatePassword(String? value) {
+    if (value?.trim().isEmpty ?? true) {
+      return '${LocaleKeys.password.tr} ${LocaleKeys.mustNotEmpty.tr}';
+    }
 
+    var startsWithUppercase = RegExp(r'^[A-Z]').hasMatch(value!);
+    if (!startsWithUppercase) {
+      return '${LocaleKeys.password.tr} ${LocaleKeys.mustStartUppercase.tr}';
+    }
+
+    var hasSpecialChar = RegExp(r"[!@#\$%\^&\*\(\)\-\+=,\.<>?/\\\[\]\{\}\|~`']").hasMatch(value);
+    if (!hasSpecialChar) {
+      return '${LocaleKeys.password.tr} ${LocaleKeys.mustContainSpecial.tr}';
+    }
+
+    if (value.trim().length < passwordLength) {
+      return '${LocaleKeys.password.tr} ${LocaleKeys.mustBe.tr} $passwordLength ${LocaleKeys.digits.tr}';
+    }
+
+    // All validations passed
+    return null;
+  }
     String? confirmPasswordValidate(
     String newPassword,
     String confirmPassword,

@@ -1,4 +1,3 @@
-
 // ignore_for_file: unnecessary_lambdas
 
 class UserModel {
@@ -44,11 +43,12 @@ class UserModel {
         isBlocked: json['is_blocked'],
         languageId: json['language_id'],
         createdAt: json['created_at'],
-        token: json['access'],
+        token: json['result']?['token']?['access'],
         previousSkinConditions: json['previous_skin_conditions'] == null
             ? []
             : List<PreviousSkinCondition>.from(
-                json['previous_skin_conditions']!.map((x) => PreviousSkinCondition.fromJson(x)),
+                json['previous_skin_conditions']!
+                    .map((x) => PreviousSkinCondition.fromJson(x)),
               ),
       );
 
@@ -67,7 +67,8 @@ class UserModel {
         'token': token,
         'previous_skin_conditions': previousSkinConditions == null
             ? []
-            : List<dynamic>.from(previousSkinConditions!.map((x) => x.toJson())),
+            : List<dynamic>.from(
+                previousSkinConditions!.map((x) => x.toJson())),
       };
 }
 
@@ -80,7 +81,8 @@ class PreviousSkinCondition {
     this.allergies,
   });
 
-  factory PreviousSkinCondition.fromJson(Map<String, dynamic> json) => PreviousSkinCondition(
+  factory PreviousSkinCondition.fromJson(Map<String, dynamic> json) =>
+      PreviousSkinCondition(
         conditionId: json['condition_id'],
         allergies: json['allergies'],
       );

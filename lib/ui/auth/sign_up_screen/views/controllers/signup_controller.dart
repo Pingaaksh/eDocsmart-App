@@ -23,20 +23,23 @@ class SignupController extends GlobalGetXController with Validator {
   FocusNode passwordFN = FocusNode();
   FocusNode confirmPasswordFN = FocusNode();
 
-  Future<void> signIn() async {
+  Future<void> signUp() async {
     if (formKey.currentState!.validate()) {
-    //  String deviceToken = await FirebaseMessagingManager.instance.getToken() ?? '';
+      //  String deviceToken = await FirebaseMessagingManager.instance.getToken() ?? '';
       Map<String, dynamic> request = {
-        // 'email': emailController.text.trim(),
-        // 'password': passwordController.text.trim(),
-        // 'device_type': Platform.isAndroid ? android : ios,
-        // 'device_id': deviceId,
-        // 'device_token': deviceToken,
+        'username': userNameController.text,
+        'email': emailAddressController.text,
+        'first_name': firstNameController.text,
+        'last_name': lastNameController.text,
+        'mobile_number': mobileNumberController.text,
+        'tc': 'True',
+        'password': passwordController.text,
+        'confirm_password': confirmPasswordController.text,
       };
       try {
         progressService.showProgressDialog(true);
-        var response = await authUseCase.login(request);
-        response.fold((left) => left.getException(), (userModel) {
+        var response = await authUseCase.signup(request);
+        response!.fold((left) => left.getException(), (userModel) {
           sharedPreferenceService.setUser(userModel);
         });
       } catch (e) {
@@ -49,8 +52,13 @@ class SignupController extends GlobalGetXController with Validator {
 
   @override
   void dispose() {
-    // emailController.dispose();
-    // passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    userNameController.dispose();
+    emailAddressController.dispose();
+    mobileNumberController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 }
