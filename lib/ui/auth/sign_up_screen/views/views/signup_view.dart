@@ -124,7 +124,7 @@ class SignupView extends GetView<SignupController> {
                     SizedBox(height: 20.h),
                     CommonButton(
                       onTap: () {
-                        controller.signUp();
+                        controller.signUp(context);
                       },
                       width: 152.w,
                       text: LocaleKeys.register,

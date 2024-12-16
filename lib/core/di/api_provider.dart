@@ -39,8 +39,6 @@ class ApiProvider extends IApiProvider {
         ApiClient.register,
         request,
       );
-
-
       ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);
       responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;
       return responseHandler;

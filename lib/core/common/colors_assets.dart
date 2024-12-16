@@ -8,7 +8,7 @@ class LightThemeColors {
 
   static Color get secondaryColor => const Color(0xFF65AC4C);
 
-  static Color get errorColor => const Color(0xFFef5350);
+  static Color get errorColor => const Color(0xFFEB5757);
 
   static Color get warningColor => const Color(0xFFff9800);
 
@@ -30,7 +30,7 @@ class LightThemeColors {
 
   static Color get dividerColor => const Color(0xFFF1E5C0);
 
-  static Color get cardBoxColor => const Color(0xFFF0F0F0);
+  static Color get cardBoxColor => const Color(0xFFF2F2F2);
 
   static Color get themeLightCode => const Color(0xFFF2F2F2);
 

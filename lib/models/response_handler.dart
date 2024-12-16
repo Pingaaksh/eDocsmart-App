@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
+import 'package:skin_match/core/common/logger.dart';
 part 'response_handler.g.dart';
 
 @JsonSerializable()
@@ -12,8 +13,10 @@ class ResponseHandler {
   String? token;
 
   static bool _isSuccess(int value) {
+    Logger.write('--------========= $value');
     return value == 200;
   }
+
 
   bool get isSuccess =>
       (_isSuccess(status ?? 0) && _isSuccess(httpStatus)) && !(error ?? true);

@@ -5,46 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="add77d6c-e21f-4505-8356-7c4cfce232b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733374817728.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733374817733.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733374985773.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733374817728.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733374817733.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733374985773.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/export_dashboard.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/view/dashboard_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733720247840.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733720247886.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733720247887.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.gradle/kotlin/errors/errors-1733720247902.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733720247840.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733720247886.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733720247887.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.kotlin/errors/errors-1733720247902.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/GST_bill_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/camera.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/gallery.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/invoice_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/invoice_vector_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/notification_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/passport_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/scan_doc_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/user_profile_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/png/view_more_ic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/common/common_file_picker.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/core/widgets/common_upload_bottomsheet.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/remote/token_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/bindings/dashboard_binding.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/controllers/dashboard_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ui/dashboard/view/widgets/invoice_list_view.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/usecase/auth_use case.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.2.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/8.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/svg/success.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/svg/success.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/common/api_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/api_client.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/common/app_common_exports.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/app_common_exports.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/common/app_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/app_constant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/common/asset_images.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/asset_images.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/common/theme_resource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/theme_resource.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/common/colors_assets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/colors_assets.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/common/validator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/common/validator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/core/di/api_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/di/api_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/widgets/app_common_textfield.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/app_common_textfield.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/widgets/common_anim_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/common_anim_dialog.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/widgets/common_text_large.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/common_text_large.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/services/shared_preference_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/services/shared_preference_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/widgets/common_bottom_sheet.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/widgets/common_bottom_sheet.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generated/locales.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/locales.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/remote/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/remote/user_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/auth/forgot_password/controllers/forgot_password_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/forgot_password/controllers/forgot_password_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/auth/forgot_password/views/forgot_password_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/forgot_password/views/forgot_password_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/auth/intro_screen/controllers/intro_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/intro_screen/controllers/intro_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/response_handler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/response_handler.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/auth/login/controllers/login_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/login/controllers/login_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/auth/login/views/login_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/login/views/login_view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/auth/otp_verify/views/otp_verify_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/otp_verify/views/otp_verify_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/auth/sign_up_screen/views/controllers/signup_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/sign_up_screen/views/controllers/signup_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/auth/sign_up_screen/views/views/signup_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/auth/sign_up_screen/views/views/signup_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/dashboard/export_dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/dashboard/export_dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/dashboard/view/dashboard_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/dashboard/view/dashboard_view.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/usecase/auth_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/usecase/auth_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,38 +131,38 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Flutter.main.dart.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "devlopment",
-    "io.flutter.reload.alreadyRun": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/project/eDocsmart-App/lib/ui/dashboard/view",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;devlopment&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/eDocsmart-App/assets/png&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\eDocsmart-App\lib\ui\dashboard\view" />
+      <recent name="D:\project\eDocsmart-App\assets\png" />
       <recent name="D:\project\eDocsmart-App\lib\ui\dashboard" />
+      <recent name="D:\project\eDocsmart-App\lib\ui\dashboard\view" />
       <recent name="D:\project\eDocsmart-App\assets\svg" />
       <recent name="D:\project\eDocsmart-App\lib\ui\auth\sign_up_screen\views" />
-      <recent name="C:\Users\Dell\Desktop\skin-match-flutter\assets\fonts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\project\eDocsmart-App\lib\ui\dashboard\view" />

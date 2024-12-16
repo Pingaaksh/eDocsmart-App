@@ -18,15 +18,15 @@ class LoginController extends GlobalGetXController with Validator {
   Future<void> signIn() async {
     if (formKey.currentState!.validate()) {
       Map<String, dynamic> request = {
-          'email'    : emailController.text,
-          'password' :passwordController.text
+        'email': emailController.text,
+        'password': passwordController.text,
       };
       try {
         progressService.showProgressDialog(true);
         var response = await authUseCase.login(request);
-        response.fold((left) => left.getException(), (userModel) {
-          sharedPreferenceService.setUser(userModel);
-          Get.to(()=> const DashboardView());
+        response.fold((left) => left.getException(), (tokenModel) {
+          sharedPreferenceService.setUser(tokenModel);
+          Get.to(() => const DashboardView());
         });
       } catch (e) {
         Logger.write('@Login : Error : ${e.toString()}');

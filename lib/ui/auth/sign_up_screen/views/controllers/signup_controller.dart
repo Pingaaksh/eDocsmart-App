@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:skin_match/core/common/app_common_exports.dart';
 import 'package:skin_match/core/global/global_controller.dart';
 import 'package:skin_match/usecase/auth_usecase.dart';
@@ -23,7 +24,7 @@ class SignupController extends GlobalGetXController with Validator {
   FocusNode passwordFN = FocusNode();
   FocusNode confirmPasswordFN = FocusNode();
 
-  Future<void> signUp() async {
+  Future<void> signUp(context) async {
     if (formKey.currentState!.validate()) {
       //  String deviceToken = await FirebaseMessagingManager.instance.getToken() ?? '';
       Map<String, dynamic> request = {
@@ -39,8 +40,23 @@ class SignupController extends GlobalGetXController with Validator {
       try {
         progressService.showProgressDialog(true);
         var response = await authUseCase.signup(request);
-        response!.fold((left) => left.getException(), (userModel) {
-          sharedPreferenceService.setUser(userModel);
+        response!.fold((left) => left.getException(), (tokenModel) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return CustomAnimDialog(
+                title: LocaleKeys.successful,
+                message:
+                'Your account has been created. Welcome aboard! You can now start exploring.',
+                positiveText: 'CONTINUE',
+                animHeight: 106.0,
+                onTap: () {
+                  Get.offAllNamed(Routes.LOGIN);
+                },
+              );
+            },
+          );
         });
       } catch (e) {
         Logger.write('@Login : Error : ${e.toString()}');

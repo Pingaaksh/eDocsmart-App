@@ -45,6 +45,17 @@ class PNGPath {
   static const String onboardingFirst = 'assets/png/onboarding_1.png';
   static const String onboardingSecond = 'assets/png/onboarding_2.png';
   static const String onboardingThird = 'assets/png/onboarding_3.png';
+  static const String userProfileIc = 'assets/png/user_profile_ic.png';
+  static const String notificationIc = 'assets/png/notification_ic.png';
+  static const String invoiceIc = 'assets/png/invoice_ic.png';
+  static const String gstBillIc = 'assets/png/GST_bill_ic.png';
+  static const String passPortIc = 'assets/png/passport_ic.png';
+  static const String viewMoreIc = 'assets/png/view_more_ic.png';
+  static const String invoiceVectorIc = 'assets/png/invoice_vector_ic.png';
+  static const String scanDocIc = 'assets/png/scan_doc_ic.png';
+  static const String camera = 'assets/png/camera.png';
+  static const String gallery = 'assets/png/gallery.png';
+  static const String upload = 'assets/png/upload.png';
 
 
 }

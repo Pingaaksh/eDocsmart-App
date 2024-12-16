@@ -107,20 +107,20 @@ mixin Validator {
     if (value?.trim().isEmpty ?? true) {
       return '${LocaleKeys.password.tr} ${LocaleKeys.mustNotEmpty.tr}';
     }
-
-    var startsWithUppercase = RegExp(r'^[A-Z]').hasMatch(value!);
-    if (!startsWithUppercase) {
-      return '${LocaleKeys.password.tr} ${LocaleKeys.mustStartUppercase.tr}';
-    }
-
-    var hasSpecialChar = RegExp(r"[!@#\$%\^&\*\(\)\-\+=,\.<>?/\\\[\]\{\}\|~`']").hasMatch(value);
-    if (!hasSpecialChar) {
-      return '${LocaleKeys.password.tr} ${LocaleKeys.mustContainSpecial.tr}';
-    }
-
-    if (value.trim().length < passwordLength) {
-      return '${LocaleKeys.password.tr} ${LocaleKeys.mustBe.tr} $passwordLength ${LocaleKeys.digits.tr}';
-    }
+    //
+    // var startsWithUppercase = RegExp(r'^[A-Z]').hasMatch(value!);
+    // if (!startsWithUppercase) {
+    //   return '${LocaleKeys.password.tr} ${LocaleKeys.mustStartUppercase.tr}';
+    // }
+    //
+    // var hasSpecialChar = RegExp(r"[!@#\$%\^&\*\(\)\-\+=,\.<>?/\\\[\]\{\}\|~`']").hasMatch(value);
+    // if (!hasSpecialChar) {
+    //   return '${LocaleKeys.password.tr} ${LocaleKeys.mustContainSpecial.tr}';
+    // }
+    //
+    // if (value.trim().length < passwordLength) {
+    //   return '${LocaleKeys.password.tr} ${LocaleKeys.mustBe.tr} $passwordLength ${LocaleKeys.digits.tr}';
+    // }
 
     // All validations passed
     return null;

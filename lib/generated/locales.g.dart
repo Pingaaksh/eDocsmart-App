@@ -56,8 +56,6 @@ class LocaleKeys {
   static const searchFieldEmptyDesc = 'searchFieldEmptyDesc';
   static const signInDesc = 'signInDesc';
   static const chooseLanguage = 'chooseLanguage';
-  static const camera = 'camera';
-  static const gallery = 'gallery';
   static const remove = 'remove';
   static const sessionExpired = 'sessionExpired';
   static const sessionExpiredDesc = 'sessionExpiredDesc';
@@ -218,6 +216,13 @@ class LocaleKeys {
   static const successful = 'SUCCESSFUL!';
   static const mustStartUppercase = 'must start with an uppercase letter.!';
   static const mustContainSpecial = 'must contain at least one special character.';
+  static const recentScans = 'RECENT SCANS';
+  static const viewMore = 'View More';
+  static const view = 'VIEW';
+  static const upload = 'UPLOAD';
+  static const gallery = 'GALLERY';
+  static const camera = 'CAMERA';
+  static const uploadYourScan = 'UPLOAD YOUR SCAN';
 
 
 

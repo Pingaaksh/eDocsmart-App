@@ -1,7 +1,7 @@
 import 'package:skin_match/core/common/app_common_exports.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:skin_match/models/remote/user_model.dart';
+import 'package:skin_match/models/remote/token_model.dart';
 
 enum UserType { admin, driver, invalidUser }
 
@@ -42,31 +42,34 @@ class SharedPreferenceService extends GetxService {
 
   void setToken(String token) {
     _pref!.setString(_token, token);
+    getToken();
   }
 
-  void setUser(UserModel user) {
-    setToken(user.token ?? '');
-    _pref!.setString(_userData, jsonEncode(user));
+  void setUser(TokenModel token) {
+    setToken(token.access.toString() ?? '');
+    Logger.write('-=-=-=-=-= ${token.access}');
+    _pref!.setString(_userData, jsonEncode(token));
     _getUserDetails();
   }
 
-  Future<UserModel> getUser() async {
+  Future<TokenModel> getUser() async {
     String? userData = _pref?.getString(_userData);
     if (userData != null) {
-      return UserModel.fromJson(jsonDecode(userData));
+      return TokenModel.fromJson(jsonDecode(userData));
     }
-    return UserModel();
+    return TokenModel();
   }
 
   Future<String?> getToken() async {
     String? token = _pref?.getString(_token);
+    Logger.write('-----token----- $token');
     return token;
   }
 
   void _getUserDetails() async {
-    UserModel? model = await getUser();
-    name.value = model.name ?? '';
-    email.value = model.email ?? '';
+    TokenModel? model = await getUser();
+     // name.value = model.name ?? '';
+     // email.value = model.email ?? '';
   }
 //
 // void updateUser(String? name, String? avatarUrl) async {
