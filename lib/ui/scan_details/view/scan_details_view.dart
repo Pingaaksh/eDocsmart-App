@@ -120,6 +120,10 @@ class ScanDetailsView extends GetView<ScanDetailsController> {
   }
 
   Widget _buildTableHeader() {
+
+
+
+    
     return Container(
       padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 29.h),
       child: Row(
