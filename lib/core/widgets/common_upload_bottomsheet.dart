@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:skin_match/core/common/common_file_picker.dart';
 import 'package:skin_match/core/widgets/common_bottom_sheet.dart';
+import 'package:skin_match/ui/dashboard/controllers/dashboard_controller.dart';
 import '../common/app_common_exports.dart';
 
-void showCustomBottomSheet(BuildContext context) {
+void showCustomBottomSheet(BuildContext context,) {
   Get.bottomSheet(
     CommonBottomSheet(
       title: LocaleKeys.uploadYourScan,
@@ -14,7 +15,7 @@ void showCustomBottomSheet(BuildContext context) {
           _buildOption(PNGPath.camera, LocaleKeys.camera, () async {
             var image = await CameraHelper.openCamera();
             if (image != null) {
-              Logger.write("Image captured: ${image.path}");
+              Logger.write('Image captured: ${image.path}');
             }else{
               Logger.write('file not pick');
             }
@@ -22,7 +23,14 @@ void showCustomBottomSheet(BuildContext context) {
           _buildOption(PNGPath.gallery, LocaleKeys.gallery, () async {
             var image = await GalleryHelper.openGallery();
             if (image != null) {
-              Logger.write("Image selected: ${image.path}");
+              Logger.write('Image selected: ${image.path}');
+              var file = File(image.path);
+
+              Map<String, File> request = {
+                'file': file,
+              };
+              Logger.write('Image path : ${file.absolute.path}');
+              await Get.put(DashboardController(Get.find())).documentUpload(Get.context,request);
             }else{
               Logger.write('file not pick');
             }

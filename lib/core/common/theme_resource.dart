@@ -185,6 +185,7 @@ class ThemeResource {
     ),
 
     colorScheme: ColorScheme(
+
       brightness: Brightness.light,
       primary: LightThemeColors.primaryColor,
       onSecondary: LightThemeColors.secondaryColor.withOpacity(0.80),

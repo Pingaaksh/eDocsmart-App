@@ -1,5 +1,4 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:get/get.dart';
 import 'package:skin_match/core/common/app_common_exports.dart';
 import 'package:skin_match/models/remote/token_model.dart';
 import 'package:skin_match/models/remote/user_model.dart';
@@ -82,12 +81,11 @@ class AuthUseCase extends UseCase {
             : Either.left(CustomException(responseHandler.message ?? ''));
       } else {
         Logger.write('-1-1-1-1-1-1-1-1 ${responseHandler!.message}');
-        return Either.left(CustomException(responseHandler!.message ?? ''));
+        return Either.left(CustomException(responseHandler.message ?? ''));
       }
     } on Exception catch (e) {
       return Either.left(e);
     }
-    return null;
   }
 
   Future<Either<Exception, String>> sendOTP(String email) async {

@@ -71,7 +71,8 @@ class SharedPreferenceService extends GetxService {
      // name.value = model.name ?? '';
      // email.value = model.email ?? '';
   }
-//
+
+
 // void updateUser(String? name, String? avatarUrl) async {
 //   UserModel? model = await getUser();
 //   model?.name = name;

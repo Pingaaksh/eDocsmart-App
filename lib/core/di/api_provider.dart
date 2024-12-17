@@ -1,3 +1,4 @@
+import 'package:image_picker/image_picker.dart';
 import 'package:skin_match/core/common/app_common_exports.dart';
 
 abstract class IApiProvider {
@@ -86,6 +87,22 @@ class ApiProvider extends IApiProvider {
       var response = await iBaseApiProvider.postMethod(
         ApiClient.resetPassword,
         request,
+      );
+      ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);
+      responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;
+      return responseHandler;
+    } on Exception catch (e, s) {
+      Logger.write('@42 error is $e $s');
+      rethrow;
+    }
+  }
+
+  Future<ResponseHandler?> documentUpload(Map<String, dynamic> request, Map<String, File> file) async {
+  try {
+      var response = await iBaseApiProvider.postMethod(
+        ApiClient.combinedData,
+        request,
+        imageFiles: file,
       );
       ResponseHandler? responseHandler = ResponseHandler.fromJson(response.data);
       responseHandler.httpStatus = response.statusCode ?? defaultHttpStatusCode;

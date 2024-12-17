@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:skin_match/core/routes/route_exports.dart';
-
+import '../../models/remote/document_upload_model.dart';
 import '../../ui/auth/otp_verify/bindings/otp_verify_binding.dart';
 import '../../ui/auth/otp_verify/views/otp_verify_view.dart';
 import '../../ui/auth/reset_password/bindings/reset_password_binding.dart';
@@ -57,6 +57,13 @@ class AppPages {
       name: _Paths.RESET_PASSWORD,
       page: () => const ResetPasswordView(),
       binding: ResetPasswordBinding(),
+      transition: Transition.fadeIn,
+    ),
+
+    GetPage(
+      name: _Paths.SCAN_DETAILS,
+      page: () => ScanDetailsView(),
+      binding: ScanDetailsBinding(),
       transition: Transition.fadeIn,
     ),
   ];

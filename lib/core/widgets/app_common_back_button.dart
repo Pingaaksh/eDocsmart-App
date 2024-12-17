@@ -20,11 +20,11 @@ class CommonBackButton extends StatelessWidget implements PreferredSizeWidget {
     return SafeArea(
       child: SizedBox(
         width: Get.width,
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 30.w,right: 20.h,top: 20.h),
-              child: GestureDetector(
+        child: Padding(
+          padding:  EdgeInsets.only(left: 30.w,right: 30.h,top: 20.h),
+          child: Row(
+            children: [
+              GestureDetector(
                 onTap: onBack.call,
                 behavior: HitTestBehavior.opaque,
                 child: ClipOval(
@@ -35,21 +35,20 @@ class CommonBackButton extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
               ),
-            ),
-            if ((title ?? '').isNotEmpty) ...[
-              Expanded(
-                child: CommonTextRegular(
-                  text: 'Reset Password',
-                  size: 26.sp,
-                  fontFamilyType: FontFamilyType.elMessiri,
-                  fontWeight: FontWeight.w700,
-                  lineHeight: 1.6,
-                  textAlign: TextAlign.center,
+              if ((title ?? '').isNotEmpty) ...[
+                Expanded(
+                  child: CommonTextRegular(
+                    text: title ?? '',
+                    size: 18.sp,
+                    fontWeight: FontWeight.w600,
+                    color: context.theme.colorScheme.primary,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-              ),
-              SizedBox(width: 80.w),
+                // SizedBox(width: 80.w),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );

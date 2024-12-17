@@ -1,7 +1,7 @@
 class ApiClient {
   static const bool _isDevelopmentMode = true;
   static const String _url = _isDevelopmentMode
-      ? 'http://192.168.1.12:4445/User_Auth/'
+      ? 'http://192.168.1.11:4445/User_Auth/'
       : 'https://concetto.bargainfox.com/api/';
 
   static const Map<String, String> applicationJsonHeader = {
@@ -20,4 +20,7 @@ class ApiClient {
   static const String forgotPassword = 'forgot-password';
   static const String verifyOTP = 'verify-code';
   static const String resetPassword = 'reset-password';
+
+
+  static const String combinedData = 'Combined_data/';
 }

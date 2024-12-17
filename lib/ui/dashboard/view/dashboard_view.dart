@@ -15,7 +15,7 @@ class DashboardView extends GetView<DashboardController> {
         child: Scaffold(
           floatingActionButton: GestureDetector(onTapUp: (details) {
             return showCustomBottomSheet(context);
-          },child: Image.asset(PNGPath.scanDocIc,height: 70.h,width: 70.w,)),
+          },child: Image.asset(PNGPath.scanDocIc,height: 70.h,width: 70.w,),),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,7 +53,7 @@ class DashboardView extends GetView<DashboardController> {
                                 text: 'Pharmaceutical',
                                 color: context.theme.colorScheme.surface,
                                 fontWeight: FontWeight.w400,
-                                size: 12.sp),
+                                size: 12.sp,),
                           ),
                         ),
                         SizedBox(

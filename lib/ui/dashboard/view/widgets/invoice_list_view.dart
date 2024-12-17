@@ -8,7 +8,7 @@ Expanded invoiceList() {
       child: GridView.builder(
         shrinkWrap: true,
         physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: 10,
+        itemCount: 5,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 15.w,
@@ -32,16 +32,17 @@ Expanded invoiceList() {
                         height: 70.h,
                         decoration: BoxDecoration(
                           color: context.theme.colorScheme.surfaceVariant,
-                          image: const DecorationImage(
-                            image: AssetImage(
-                              PNGPath.invoiceVectorIc,
-                            ),
-                          ),
+                          // image: const DecorationImage(
+                          //   image: AssetImage(
+                          //     PNGPath.invoiceVectorIc,
+                          //   ),
+                          // ),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10.r),
                             topRight: Radius.circular(10.r),
                           ),
                         ),
+                        child: Image.asset(PNGPath.invoiceVectorIc,width: 37,height: 34,),
                       ),
                     ),
                   ],
@@ -61,7 +62,7 @@ Expanded invoiceList() {
                       SizedBox(height: 7.h),
                       CommonTextRegular(
                         text: 'Smith John',
-                        size: 8.sp,
+                        size: 10.sp,
                         fontWeight: FontWeight.w500,
                         color: context.theme.colorScheme.onTertiaryContainer,
                       ),
@@ -74,7 +75,7 @@ Expanded invoiceList() {
                             children: [
                               CommonTextRegular(
                                 text: 'Created on',
-                                size: 6.sp,
+                                size: 8.sp,
                                 fontWeight: FontWeight.w500,
                                 color: context.theme.colorScheme.onTertiaryContainer,
                               ),
@@ -89,6 +90,7 @@ Expanded invoiceList() {
                           ),
                           CommonButton.custom(
                             onTap: () {
+                              Get.toNamed(Routes.SCAN_DETAILS);
                             },
                             width: 60.w,
                             height: 20.h,

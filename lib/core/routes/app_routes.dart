@@ -9,7 +9,7 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const SIGNUP = _Paths.SIGNUP;
 
-  static const STEP1 = _Paths.STEP1;
+  static const SCAN_DETAILS = _Paths.SCAN_DETAILS;
   static const STEP2 = _Paths.STEP2;
   static const VERIFY_OTP = _Paths.VERIFY_OTP;
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
@@ -24,7 +24,7 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const SIGNUP = '/signup';
 
-  static const STEP1 = '/step1';
+  static const SCAN_DETAILS = '/scan-details-screen';
   static const STEP2 = '/step2';
   static const VERIFY_OTP = '/verify-otp';
 

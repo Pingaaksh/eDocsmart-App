@@ -603,9 +603,9 @@
     },
     {
       "name": "mime",
-      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.6",
+      "rootUri": "file:///C:/Users/Dell/AppData/Local/Pub/Cache/hosted/pub.dev/mime-1.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "2.18"
     },
     {
       "name": "mockito",
@@ -998,7 +998,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-12-16T05:00:34.913959Z",
+  "generated": "2024-12-17T10:20:31.148760Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///C:/flutter/src/flutter",

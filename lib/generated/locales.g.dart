@@ -223,6 +223,13 @@ class LocaleKeys {
   static const gallery = 'GALLERY';
   static const camera = 'CAMERA';
   static const uploadYourScan = 'UPLOAD YOUR SCAN';
+  static const scanDetails = 'SCAN DETAILS';
+  static const details = 'DETAILS';
+  static const otherFiles = 'OTHER FILES';
+
+  static const key = 'KEY';
+  static const qty = 'QTY';
+  static const value = 'VALUES';
 
 
 
